@@ -1,0 +1,7 @@
+@font-face {
+  font-family: "PoorStory";
+  font-style: normal;
+  font-weight: 400;
+  src: local("PoorStory Regular"), local("PoorStory-Regular"),
+    url("../fonts/PoorStory-Regular.ttf") format("truetype");
+}
