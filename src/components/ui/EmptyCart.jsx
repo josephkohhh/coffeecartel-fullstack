@@ -26,15 +26,6 @@ export const EmptyCart = () => {
       <Typography variant="h6" textAlign="center" marginTop={1.5}>
         Your Cart is Empty!
       </Typography>
-
-      <Typography
-        variant="body1"
-        color={color.lightChocolate}
-        textAlign="center"
-        marginBottom={3}
-      >
-        Browse here
-      </Typography>
     </Box>
   );
 };

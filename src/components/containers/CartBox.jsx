@@ -19,7 +19,7 @@ export const CartBox = ({
 
   // Function to handle quantity change
   const handleChangeQuantity = (id, event) => {
-    const newQuantity = event.target.value;
+    let newQuantity = event.target.value;
 
     // Validation (prevent NaN, below 1 or above 10)
     if (isNaN(newQuantity) || newQuantity < 1 || newQuantity > 10) {
