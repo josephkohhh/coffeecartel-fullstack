@@ -27,6 +27,7 @@ export const AccountNavButton = () => {
         onClick={handleOpenMenu}
         startIcon={<AccountCircleOutlinedIcon />}
         endIcon={<KeyboardArrowDownIcon />}
+        disabled
         sx={{
           color: color.black,
           "&:hover": {

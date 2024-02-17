@@ -8,8 +8,14 @@ import { Box, Stack, Typography } from "@mui/material";
 import { color, footerLinks } from "../../data/constants";
 import { Logo } from "../ui/Logo";
 import { NavButtonLinks } from "../ui/NavButtonLinks";
+import { Link } from "react-router-dom";
+import React from "react";
 
 export const Footer = () => {
+  const linkStyle = {
+    textDecoration: "none",
+    color: color.black,
+  };
   return (
     <Box
       sx={{
@@ -32,8 +38,23 @@ export const Footer = () => {
         <Logo />
 
         <Stack direction={"row"} spacing={2}>
-          {footerLinks.map((i, index) => (
-            <NavButtonLinks key={index}>{i}</NavButtonLinks>
+          {footerLinks.map((link, index) => (
+            <React.Fragment key={index}>
+              {index === 0 ? (
+                <a
+                  href={link.path}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={linkStyle}
+                >
+                  <NavButtonLinks>{link.label}</NavButtonLinks>
+                </a>
+              ) : (
+                <Link to={link.path}>
+                  <NavButtonLinks>{link.label}</NavButtonLinks>
+                </Link>
+              )}
+            </React.Fragment>
           ))}
         </Stack>
       </Stack>

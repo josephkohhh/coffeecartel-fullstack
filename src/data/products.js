@@ -1,3 +1,9 @@
+/**
+ * File: products.js
+ * Author: Joseph Koh
+ * Description: To store product list
+ */
+
 export let products = [
   {
     id: 1,

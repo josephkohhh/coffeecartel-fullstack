@@ -11,6 +11,7 @@ import { AccountNavButton } from "../ui/AccountNavButton";
 import { Logo } from "../ui/Logo";
 import { NavButtonLinks } from "../ui/NavButtonLinks";
 import { MobileMenu } from "../ui/MobileMenu";
+import { Link } from "react-router-dom";
 
 export const Navbar = () => {
   return (
@@ -30,7 +31,7 @@ export const Navbar = () => {
             width: "100%",
             display: "flex",
             flexDirection: "column",
-            mt: 0.5,
+            marginTop: 1.5,
           }}
         >
           {/* Top layer nav (non-mobile) */}
@@ -39,7 +40,10 @@ export const Navbar = () => {
             justifyContent="flex-end"
             display={{ xs: "none", sm: "flex" }}
           >
-            <CartNavButton />
+            <Link to="/cart">
+              <CartNavButton />
+            </Link>
+
             <AccountNavButton />
           </Stack>
           {/* Top layer nav (mobile) */}
@@ -58,8 +62,10 @@ export const Navbar = () => {
 
           {/* Bottom layer nav */}
           <Stack direction="row" justifyContent="center" spacing={1.5} mb={0.5}>
-            {navLinks.map((i, index) => (
-              <NavButtonLinks key={index}>{i}</NavButtonLinks>
+            {navLinks.map((link, index) => (
+              <Link to={link.path} key={index}>
+                <NavButtonLinks>{link.label}</NavButtonLinks>
+              </Link>
             ))}
           </Stack>
         </Box>

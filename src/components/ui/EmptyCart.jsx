@@ -6,7 +6,6 @@
 
 import { Box, Typography } from "@mui/material";
 import emptyCup from "../../assets/empty-cup.png";
-import { color } from "../../data/constants";
 
 export const EmptyCart = () => {
   return (

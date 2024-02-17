@@ -9,6 +9,7 @@ import { color } from "../../data/constants";
 import { Menu, MenuItem } from "@mui/material";
 import { useState } from "react";
 import { UseWindowResize } from "../../hooks/UseWindowResize";
+import { Link } from "react-router-dom";
 
 export const MobileMenu = () => {
   // State and functions for handling menu open/close
@@ -26,6 +27,11 @@ export const MobileMenu = () => {
 
   // Function to close mobile menu upon window resize
   UseWindowResize(handleCloseMenu, handleCloseSubMenu);
+
+  const linkStyle = {
+    color: color.black,
+    textDecoration: "none",
+  };
   return (
     <>
       {/* Hamburger menu */}
@@ -43,8 +49,13 @@ export const MobileMenu = () => {
         open={Boolean(anchorEl)}
         onClose={handleCloseMenu}
       >
-        <MenuItem>Cart</MenuItem>
-        <MenuItem onClick={handleOpenSubMenu}>Account</MenuItem>
+        <Link style={linkStyle} to="/cart">
+          <MenuItem>Cart</MenuItem>
+        </Link>
+
+        <MenuItem disabled onClick={handleOpenSubMenu}>
+          Account
+        </MenuItem>
       </Menu>
 
       {/* Sub menu for account link */}

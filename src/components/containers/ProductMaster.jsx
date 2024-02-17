@@ -51,7 +51,6 @@ export const ProductMaster = () => {
             width: "250px",
             height: "100%",
             top: "0",
-            position: "-webkit-sticky",
             position: "sticky",
             marginRight: "24px",
           }}
