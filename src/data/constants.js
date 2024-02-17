@@ -80,13 +80,15 @@ export const tableData = [
 
 // Code snippets stored in variables
 export const routerCodeSnippet = `<Router>
- <Routes>
-  <Route index element={<Home />} />
-  {/* Home route */}
-  <Route path="/Home" element={<Home />} />
-  {/* About route */}
-  <Route path="/About" element={<About />} />
- </Routes>
+  <Routes>
+    {/* Default route */}
+    <Route path="/" element={<Shop />} />
+    {/* Respective route */}
+    <Route path="/home" element={<Home />} />
+    <Route path="/shop" element={<Shop />} />
+    <Route path="/cart" element={<Cart />} />
+    <Route path="/about" element={<About />} />
+  </Routes>
 </Router>`;
 export const useStateCodeSnippet = `const [anchorEl, setAnchorEl] = useState(null);
 const handleOpenMenu = (event) => setAnchorEl(event.currentTarget);

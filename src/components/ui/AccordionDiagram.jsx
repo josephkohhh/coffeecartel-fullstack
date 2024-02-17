@@ -106,9 +106,9 @@ export const AccordionDiagram = () => {
         <AccordionDetails>
           <ReactSyntaxHighligher code={routerCodeSnippet} language={"jsx"} />
           <Typography {...fontSizing} style={textAlignStart}>
-            Home and About page will be rendered when the corresponding routes
-            are matched. Home page component is the default route when no path
-            is specified.
+            Home, Shop and About page will be rendered when the corresponding
+            routes are matched. Shop page is the default route when no path is
+            specified.
           </Typography>
         </AccordionDetails>
       </Accordion>
@@ -147,8 +147,8 @@ export const AccordionDiagram = () => {
             language={"javascript"}
           />
           <Typography {...fontSizing} style={textAlignStart}>
-            This function that has useEffect built in when imported allow
-            multiple callbacks to be executed when the window is resized
+            This function has useEffect defined and when imported allow multiple
+            callbacks to be executed when the window is resized.
           </Typography>
 
           <br />
@@ -185,9 +185,9 @@ export const AccordionDiagram = () => {
             language={"javascript"}
           />
           <Typography {...fontSizing} style={textAlignStart}>
-            Using localStorage to get the stored taskList array and convert JSON
-            string to array. Update the stored taskList by converting array to
-            JSON string with updatedTaskList. Delete the array from localStorage
+            Using localStorage to get the stored cartList array and convert JSON
+            string to array. Update the stored cartList by converting array to
+            JSON string with updatedCartList. Delete the array from localStorage
             if user wishes to clear all task(s).
           </Typography>
         </AccordionDetails>
@@ -211,7 +211,7 @@ export const AccordionDiagram = () => {
             language={"jsx"}
           />
           <Typography {...fontSizing} style={textAlignStart}>
-            Cartcontext is used for data consumption when it is needed.
+            CartContext is used for data consumption when it is needed.
             CartContextProvider provides the context to child components within
             its subtree.
           </Typography>
@@ -286,9 +286,9 @@ export const AccordionDiagram = () => {
           </Typography>
           <ReactSyntaxHighligher code={arrayMapCodeSnippet} language={"jsx"} />
           <Typography {...fontSizing} style={textAlignStart}>
-            The map function will iterate over the array, and for each element
-            in that array, it renders a grid component passing down the product
-            data as property.
+            The map function will iterate over the array and for each element in
+            that array, it renders a grid component passing down the product
+            data as props.
           </Typography>
 
           <br />
@@ -300,7 +300,7 @@ export const AccordionDiagram = () => {
             language={"javascript"}
           />
           <Typography {...fontSizing} style={textAlignStart}>
-            The filter method filters and return list based on category. The
+            The filter method filters and return a list based on category. The
             slice method creates a copy of the original array to prevent
             mutation, then the sort method will sort the list by price.
           </Typography>
@@ -329,7 +329,7 @@ export const AccordionDiagram = () => {
           <Typography {...fontSizing} style={textAlignStart}>
             The reduce method will reduce the elements in the array and
             acculumate to a single value. In this case, it will sum up all the
-            product cost in the cart list
+            product cost in the cart list.
           </Typography>
         </AccordionDetails>
       </Accordion>

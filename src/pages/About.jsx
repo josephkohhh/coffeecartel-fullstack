@@ -8,7 +8,7 @@ import { color } from "../data/constants";
 import { Navbar } from "../components/layout/Navbar";
 import { Footer } from "../components/layout/Footer";
 import { AppTitle } from "../components/ui/AppTitle";
-// import componentDiagram from "../assets/images/component-diagram.png";
+import componentDiagram from "../assets/component-diagram.png";
 import { Diagram } from "../components/ui/Diagram";
 import { TableDiagram } from "../components/ui/TableDiagram";
 import { AccordionDiagram } from "../components/ui/AccordionDiagram";
@@ -44,7 +44,7 @@ export const About = () => {
           width: { xs: "80%", sm: "550px", md: "700px" },
         }}
       >
-        <Diagram src={""} alt="component-diagram" />
+        <Diagram src={componentDiagram} alt="component-diagram" />
       </Box>
 
       {/* Table diagram */}

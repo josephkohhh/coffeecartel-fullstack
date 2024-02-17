@@ -69,9 +69,9 @@ export const Home = () => {
               variant="contained"
               size="large"
               sx={{
-                width: { xs: "60%", sm: "50%", md: "30%" },
-                bgcolor: color.green,
-                "&:hover": { color: color.white, bgcolor: color.darkgreen },
+                width: { xs: "60%", sm: "50%", md: "20%" },
+                bgcolor: color.lightChocolate,
+                "&:hover": { color: color.white, bgcolor: color.chocolate },
               }}
             >
               Shop Now
