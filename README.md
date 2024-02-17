@@ -1,4 +1,4 @@
-# TaskMaster (React + Vite)
+# CoffeeCartel (React + Vite)
 
 This repo contains source code for CoffeeCartel, a responsive online coffee store web app.
 
