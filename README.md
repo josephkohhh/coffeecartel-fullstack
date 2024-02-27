@@ -19,9 +19,9 @@ To install and set up your project:
 ```bash
 cd path/to/your-desired-directory
 
-git clone -b prod https://github.com/josephkohhh/coffeecartel-frontend.git
+git clone -b prod https://github.com/josephkohhh/coffeecartel-fullstack.git
 
-cd coffeecartel-frontend
+cd coffeecartel-fullstack
 
 npm install
 
