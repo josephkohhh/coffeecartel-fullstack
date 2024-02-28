@@ -10,6 +10,7 @@ import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import { useState } from "react";
 import { UseWindowResize } from "../../hooks/UseWindowResize";
+import { Link } from "react-router-dom";
 
 export const AccountNavButton = () => {
   // State and functions for handling menu open/close
@@ -19,6 +20,11 @@ export const AccountNavButton = () => {
 
   // Function to close menu upon window resize
   UseWindowResize(handleCloseMenu);
+
+  const linkStyle = {
+    color: color.black,
+    textDecoration: "none",
+  };
   return (
     <>
       {/* Account nav button */}
@@ -27,7 +33,6 @@ export const AccountNavButton = () => {
         onClick={handleOpenMenu}
         startIcon={<AccountCircleOutlinedIcon />}
         endIcon={<KeyboardArrowDownIcon />}
-        disabled
         sx={{
           color: color.black,
           "&:hover": {
@@ -54,8 +59,13 @@ export const AccountNavButton = () => {
           horizontal: "right",
         }}
       >
-        <MenuItem>Login</MenuItem>
-        <MenuItem>Sign Up</MenuItem>
+        <Link style={linkStyle} to="/login">
+          <MenuItem>Login</MenuItem>
+        </Link>
+
+        <Link style={linkStyle} to="/register">
+          <MenuItem>Sign Up</MenuItem>
+        </Link>
       </Menu>
     </>
   );

@@ -53,9 +53,7 @@ export const MobileMenu = () => {
           <MenuItem>Cart</MenuItem>
         </Link>
 
-        <MenuItem disabled onClick={handleOpenSubMenu}>
-          Account
-        </MenuItem>
+        <MenuItem onClick={handleOpenSubMenu}>Account</MenuItem>
       </Menu>
 
       {/* Sub menu for account link */}
@@ -72,8 +70,12 @@ export const MobileMenu = () => {
           horizontal: "right",
         }}
       >
-        <MenuItem>Login</MenuItem>
-        <MenuItem>Sign Up</MenuItem>
+        <Link style={linkStyle} to="/login">
+          <MenuItem>Login</MenuItem>
+        </Link>
+        <Link style={linkStyle} to="/register">
+          <MenuItem>Sign Up</MenuItem>
+        </Link>
       </Menu>
     </>
   );
