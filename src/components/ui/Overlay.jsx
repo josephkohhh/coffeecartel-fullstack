@@ -16,7 +16,7 @@ export const Overlay = () => {
         left: 0,
         width: "100%",
         height: "100%",
-        bgcolor: "rgba(255, 255, 255, 0.5)", // Semi-transparent black overlay
+        // bgcolor: "rgba(255, 255, 255, 0.5)", // Semi-transparent black overlay
         zIndex: 9999, // Ensure the overlay appears on top of other content
       }}
     />

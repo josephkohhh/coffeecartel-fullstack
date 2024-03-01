@@ -4,12 +4,13 @@
  * Description: Represents the login button
  */
 
-import { Button } from "@mui/material";
 import { color } from "../../data/constants";
+import { LoadingButton } from "@mui/lab";
 
-export const AccessButton = ({ type, children }) => {
+export const AccessButton = ({ loading, type, children }) => {
   return (
-    <Button
+    <LoadingButton
+      loading={loading}
       type={type}
       variant="contained"
       disableRipple
@@ -22,6 +23,6 @@ export const AccessButton = ({ type, children }) => {
       }}
     >
       {children}
-    </Button>
+    </LoadingButton>
   );
 };

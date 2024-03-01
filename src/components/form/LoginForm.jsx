@@ -16,7 +16,9 @@ import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
-import axios from "axios";
+import { Login } from "../../services/UserApi";
+import { Delay } from "../../utils/Delay";
+import { Overlay } from "../ui/Overlay";
 
 // import { useHistory } from "react-router-dom";
 
@@ -29,127 +31,141 @@ export const LoginForm = () => {
   // Show password visbility state
   const [showPassword, setShowPassword] = useState(false);
 
+  // Loading state
+  const [loading, setLoading] = useState(false);
+
   // Login message state
   const [errorMessage, setErrorMessage] = useState(null);
+
   // React Hook Form
   const {
     register,
     handleSubmit,
     formState: { errors },
+    reset,
   } = useForm();
 
   // Function to submit login request
   const submitLogin = async (data) => {
-    const res = await axios.post("http://localhost:3000/login", data);
-    // User route
-    if (res.data.status === 200 && res.data.role === "user") {
-      setErrorMessage(null);
-    }
-    // Admin route
-    if (res.data.status === 200 && res.data.role === "admin") {
-      setErrorMessage(null);
-    }
+    try {
+      await Delay(setLoading, 1000);
 
-    if (res.data.status === 401) {
-      setErrorMessage(res.data.error);
-    }
-    if (res.data.status === 500) {
-      setErrorMessage(res.data.error);
+      const res = await Login(data); // API call
+
+      setLoading(false);
+
+      // User route
+      if (res.data.status === 200 && res.data.role === "user") {
+        setErrorMessage(null);
+        //... route to shop page
+      }
+      // Admin route
+      if (res.data.status === 200 && res.data.role === "admin") {
+        setErrorMessage(null);
+        //... route to admin dashboard
+      }
+
+      if (res.data.status === 401 || res.data.status === 500)
+        setErrorMessage(res.data.error);
+    } catch (error) {
+      setErrorMessage("Connection refused. Please try again");
+      setLoading(false);
+    } finally {
+      reset();
     }
   };
   return (
-    // Login container
-    <Paper
-      sx={{
-        width: { xs: "65%", sm: "400px", lg: "550px" },
-        minHeight: "540px",
-        margin: "90px auto",
-        padding: "20px 30px",
-        borderRadius: "10px",
-        border: "1px solid #DDDDDD",
-      }}
-    >
-      <Typography variant="h4" color={color.grey} textAlign="center">
-        Login
-      </Typography>
-
-      {/* Login Form */}
-      <form onSubmit={handleSubmit(submitLogin)}>
-        <Stack width="100%" direction="column" marginY={4} spacing={3.5}>
-          <TextField
-            type="text"
-            label="Username"
-            sx={{
-              width: "100%",
-              bgcolor: color.white,
-            }}
-            {...register("username", {
-              required: "Username is required",
-            })}
-            error={!!errors.username}
-            helperText={errors.username?.message}
-          />
-          <TextField
-            type={showPassword ? "text" : "password"}
-            label="Password"
-            sx={{
-              width: "100%",
-              bgcolor: color.white,
-            }}
-            InputProps={{
-              endAdornment: (
-                <InputAdornment position="end">
-                  <IconButton
-                    onClick={() => setShowPassword(!showPassword)}
-                    edge="end"
-                    disableRipple
-                  >
-                    {showPassword ? <VisibilityOff /> : <Visibility />}
-                  </IconButton>
-                </InputAdornment>
-              ),
-            }}
-            {...register("password", {
-              required: "Password is required",
-              minLength: {
-                value: 8,
-                message: "Password must be at least 8 characters long",
-              },
-            })}
-            error={!!errors.password}
-            helperText={errors.password?.message}
-          />
-
-          {/* Error message */}
-          {errorMessage && <ErrorMessage>{errorMessage}</ErrorMessage>}
-
-          {/* Login button */}
-          <AccessButton type="submit">Login</AccessButton>
-        </Stack>
-      </form>
-
-      <Divider sx={{ color: "#9FA1A1" }}>OR</Divider>
-
-      {/* Google Login */}
-      <Stack width="100%" marginY={4} spacing={5.5}>
-        <GoogleLoginButton />
-      </Stack>
-
-      {/* Create account link */}
-      <Typography
-        variant="body1"
-        textAlign="center"
-        color="#9FA1A1"
-        marginBottom={0.5}
+    <>
+      {/* Login container */}
+      <Paper
+        sx={{
+          width: { xs: "65%", sm: "400px", lg: "550px" },
+          minHeight: "540px",
+          margin: "90px auto",
+          padding: "20px 30px",
+          borderRadius: "10px",
+          border: "1px solid #DDDDDD",
+        }}
       >
-        New to CoffeeCartel?
-      </Typography>
-
-      <Link style={linkStyle} to="/register">
-        <Typography variant="body1" textAlign="center">
-          Create Account
+        <Typography variant="h4" color={color.grey} textAlign="center">
+          Login
         </Typography>
-      </Link>
-    </Paper>
+
+        {/* Login Form */}
+        <form onSubmit={handleSubmit(submitLogin)}>
+          <Stack width="100%" direction="column" marginY={4} spacing={3.5}>
+            <TextField
+              type="text"
+              label="Username"
+              {...register("username", {
+                required: "Username is required",
+              })}
+              error={!!errors.username}
+              helperText={errors.username?.message}
+            />
+            <TextField
+              type={showPassword ? "text" : "password"}
+              label="Password"
+              InputProps={{
+                endAdornment: (
+                  <InputAdornment position="end">
+                    <IconButton
+                      onClick={() => setShowPassword(!showPassword)}
+                      edge="end"
+                      disableRipple
+                    >
+                      {showPassword ? <VisibilityOff /> : <Visibility />}
+                    </IconButton>
+                  </InputAdornment>
+                ),
+              }}
+              {...register("password", {
+                required: "Password is required",
+                minLength: {
+                  value: 8,
+                  message: "Password must be at least 8 characters long",
+                },
+              })}
+              error={!!errors.password}
+              helperText={errors.password?.message}
+            />
+
+            {/* Error message */}
+            {errorMessage && <ErrorMessage>{errorMessage}</ErrorMessage>}
+
+            {/* Login button */}
+            <AccessButton type="submit" loading={loading}>
+              Login
+            </AccessButton>
+          </Stack>
+        </form>
+
+        <Divider sx={{ color: "#9FA1A1" }}>OR</Divider>
+
+        {/* Google Login */}
+        <Stack width="100%" marginY={4} spacing={5.5}>
+          <GoogleLoginButton />
+        </Stack>
+
+        {/* Create account link */}
+        <Typography
+          variant="body1"
+          textAlign="center"
+          color="#9FA1A1"
+          marginBottom={0.5}
+        >
+          New to CoffeeCartel?
+        </Typography>
+
+        <Link style={linkStyle} to="/register">
+          <Typography variant="body1" textAlign="center">
+            Create Account
+          </Typography>
+        </Link>
+      </Paper>
+
+      {/* Render overlay if loading is TRUE */}
+      {loading && <Overlay />}
+    </>
   );
 };

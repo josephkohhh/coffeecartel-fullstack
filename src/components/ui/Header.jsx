@@ -17,7 +17,7 @@ export const Header = () => {
         borderRadius: "0 0 25px 25px",
         border: "1px solid #DDDDDD",
       }}
-      p={4}
+      p={3.5}
     >
       <Logo />
     </Box>
