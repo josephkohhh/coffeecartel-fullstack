@@ -19,8 +19,7 @@ import { useForm } from "react-hook-form";
 import { Login } from "../../services/UserApi";
 import { Delay } from "../../utils/Delay";
 import { Overlay } from "../ui/Overlay";
-
-// import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export const LoginForm = () => {
   const linkStyle = {
@@ -28,14 +27,14 @@ export const LoginForm = () => {
     textDecoration: "none",
     cursor: "pointer",
   };
-  // Show password visbility state
-  const [showPassword, setShowPassword] = useState(false);
 
-  // Loading state
-  const [loading, setLoading] = useState(false);
+  const navigate = useNavigate(); // Create instance of useNavigate
 
-  // Login message state
-  const [errorMessage, setErrorMessage] = useState(null);
+  const [showPassword, setShowPassword] = useState(false); // Show password visbility state
+
+  const [loading, setLoading] = useState(false); // Loading state
+
+  const [errorMessage, setErrorMessage] = useState(null); // Login message state
 
   // React Hook Form
   const {
@@ -57,12 +56,12 @@ export const LoginForm = () => {
       // User route
       if (res.data.status === 200 && res.data.role === "user") {
         setErrorMessage(null);
-        //... route to shop page
+        navigate("/shop"); // Redirect to shop page
       }
       // Admin route
       if (res.data.status === 200 && res.data.role === "admin") {
         setErrorMessage(null);
-        //... route to admin dashboard
+        navigate("/admin"); // Redirect to admin page
       }
 
       if (res.data.status === 401 || res.data.status === 500)

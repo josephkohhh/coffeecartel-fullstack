@@ -25,6 +25,7 @@ function App() {
           <Routes>
             {/* Default route */}
             <Route path="/" element={<Shop />} />
+            {/* <Route path="/" element={<Admin />} /> */}
             {/* Respective route */}
             <Route path="/home" element={<Home />} />
             <Route path="/shop" element={<Shop />} />
