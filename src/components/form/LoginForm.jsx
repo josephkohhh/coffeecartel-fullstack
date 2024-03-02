@@ -20,6 +20,7 @@ import { Login } from "../../services/UserApi";
 import { Delay } from "../../utils/Delay";
 import { Overlay } from "../ui/Overlay";
 import { useNavigate } from "react-router-dom";
+import { saveToLocalStorage } from "../../services/LocalStorage";
 
 export const LoginForm = () => {
   const linkStyle = {
@@ -61,6 +62,8 @@ export const LoginForm = () => {
       // Admin route
       if (res.data.status === 200 && res.data.role === "admin") {
         setErrorMessage(null);
+        console.log(res.data);
+        saveToLocalStorage("token", res.data.token);
         navigate("/admin"); // Redirect to admin page
       }
 

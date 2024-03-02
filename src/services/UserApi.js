@@ -15,9 +15,19 @@ export const Login = async (data) => {
   }
 };
 
+// Register API call
 export const Register = async (data) => {
   try {
     return await axios.post("http://localhost:3000/register", data);
+  } catch (error) {
+    throw error;
+  }
+};
+
+// Verify token API call
+export const VerifyToken = async () => {
+  try {
+    return await axios.get("http://localhost:3000/protected");
   } catch (error) {
     throw error;
   }
