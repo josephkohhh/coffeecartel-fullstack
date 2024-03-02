@@ -12,7 +12,7 @@ import { useState } from "react";
 import { UseWindowResize } from "../../hooks/UseWindowResize";
 import { Link } from "react-router-dom";
 
-export const UserProfileButton = () => {
+export const UserProfileButton = ({ user }) => {
   // State and functions for handling menu open/close
   const [anchorEl, setAnchorEl] = useState(null);
   const handleOpenMenu = (event) => setAnchorEl(event.currentTarget);
@@ -42,7 +42,7 @@ export const UserProfileButton = () => {
           },
         }}
       >
-        Admin
+        {user.firstname}
       </Button>
 
       {/* Account menu */}

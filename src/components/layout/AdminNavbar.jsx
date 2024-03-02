@@ -5,13 +5,13 @@
  */
 
 import { AppBar, Toolbar, Box, Stack } from "@mui/material";
-import { color, navLinks } from "../../data/constants";
+import { color } from "../../data/constants";
 import { UserProfileButton } from "../ui/UserProfileButton";
 import { Logo } from "../ui/Logo";
 import { UserProfileMenu } from "../ui/UserProfileMenu";
 import { Link } from "react-router-dom";
 
-export const AdminNavbar = () => {
+export const AdminNavbar = ({ user }) => {
   return (
     <AppBar
       elevation={0}
@@ -43,7 +43,7 @@ export const AdminNavbar = () => {
             justifyContent="flex-end"
             display={{ xs: "none", sm: "flex" }}
           >
-            <UserProfileButton />
+            <UserProfileButton user={user} />
           </Stack>
 
           {/* Menu (mobile) */}

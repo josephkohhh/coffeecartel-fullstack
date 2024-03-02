@@ -23,7 +23,9 @@ export const ManageProducts = () => {
     >
       <Stack direction="column">
         {/* Title */}
-        <Typography variant="h6">Manage Products</Typography>
+        <Typography variant="h6" noWrap>
+          Manage Products
+        </Typography>
 
         {/* User count */}
         <Typography variant="h3" textAlign="center" marginTop={3}>

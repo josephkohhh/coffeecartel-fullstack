@@ -20,7 +20,8 @@ import { Login } from "../../services/UserApi";
 import { Delay } from "../../utils/Delay";
 import { Overlay } from "../ui/Overlay";
 import { useNavigate } from "react-router-dom";
-import { saveToLocalStorage } from "../../services/LocalStorage";
+import { useContext } from "react";
+import { UserContext } from "../../context/UserContext";
 
 export const LoginForm = () => {
   const linkStyle = {
@@ -28,6 +29,9 @@ export const LoginForm = () => {
     textDecoration: "none",
     cursor: "pointer",
   };
+
+  // Consume UserContext
+  const { user, SetUserInfo } = useContext(UserContext);
 
   const navigate = useNavigate(); // Create instance of useNavigate
 
@@ -57,14 +61,14 @@ export const LoginForm = () => {
       // User route
       if (res.data.status === 200 && res.data.role === "user") {
         setErrorMessage(null);
-        navigate("/shop"); // Redirect to shop page
+        SetUserInfo(res.data);
+        navigate("/shop");
       }
       // Admin route
       if (res.data.status === 200 && res.data.role === "admin") {
         setErrorMessage(null);
-        console.log(res.data);
-        saveToLocalStorage("token", res.data.token);
-        navigate("/admin"); // Redirect to admin page
+        SetUserInfo(res.data);
+        navigate("/admin");
       }
 
       if (res.data.status === 401 || res.data.status === 500)
@@ -76,6 +80,7 @@ export const LoginForm = () => {
       reset();
     }
   };
+
   return (
     <>
       {/* Login container */}

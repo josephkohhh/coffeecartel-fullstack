@@ -14,30 +14,38 @@ import { About } from "./pages/About";
 import { Login } from "./pages/Login";
 import { Register } from "./pages/Register";
 import { Admin } from "./pages/Admin";
+import { PrivateRoute } from "./utils/PrivateRoute";
 import { CartContextProvider } from "./context/CartContext";
+import { UserContextProvider } from "./context/UserContext";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 function App() {
   return (
-    <CartContextProvider>
-      <ThemeProvider theme={FontTheme}>
-        <Router>
-          <Routes>
-            {/* Default route */}
-            <Route path="/" element={<Shop />} />
-            {/* <Route path="/" element={<Admin />} /> */}
-            {/* Respective route */}
-            <Route path="/home" element={<Home />} />
-            <Route path="/shop" element={<Shop />} />
-            <Route path="/cart" element={<Cart />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/register" element={<Register />} />
-            <Route path="/admin" element={<Admin />} />
-          </Routes>
-        </Router>
-      </ThemeProvider>
-    </CartContextProvider>
+    <UserContextProvider>
+      <CartContextProvider>
+        <ThemeProvider theme={FontTheme}>
+          <Router>
+            <Routes>
+              {/* Default route */}
+              <Route path="/" element={<Shop />} />
+
+              {/* Respective route */}
+              <Route path="/home" element={<Home />} />
+              <Route path="/shop" element={<Shop />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/register" element={<Register />} />
+
+              {/* Private Route */}
+              <Route element={<PrivateRoute />}>
+                <Route path="/admin" element={<Admin />} />
+                <Route path="/cart" element={<Cart />} />
+              </Route>
+            </Routes>
+          </Router>
+        </ThemeProvider>
+      </CartContextProvider>
+    </UserContextProvider>
   );
 }
 

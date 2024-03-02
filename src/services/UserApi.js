@@ -24,8 +24,8 @@ export const Register = async (data) => {
   }
 };
 
-// Verify token API call
-export const VerifyToken = async () => {
+// Verify user API call
+export const Authenticate = async () => {
   try {
     return await axios.get("http://localhost:3000/protected");
   } catch (error) {
