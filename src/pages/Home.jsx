@@ -1,3 +1,8 @@
+/* File: Home.jsx
+ * Author: Joseph Koh
+ * Description: Represents the Home page
+ */
+
 import { Navbar } from "../components/layout/Navbar";
 import { color } from "../data/constants";
 import { Box, Stack, Typography, Button } from "@mui/material";

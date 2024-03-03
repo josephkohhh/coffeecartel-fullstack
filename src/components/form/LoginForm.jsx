@@ -22,6 +22,7 @@ import { Overlay } from "../ui/Overlay";
 import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { UserContext } from "../../context/UserContext";
+import { saveToLocalStorage } from "../../services/LocalStorage";
 
 export const LoginForm = () => {
   const linkStyle = {
@@ -31,7 +32,7 @@ export const LoginForm = () => {
   };
 
   // Consume UserContext
-  const { user, SetUserInfo } = useContext(UserContext);
+  const { SetUserInfo } = useContext(UserContext);
 
   const navigate = useNavigate(); // Create instance of useNavigate
 
@@ -59,15 +60,16 @@ export const LoginForm = () => {
       setLoading(false);
 
       // User route
-      if (res.data.status === 200 && res.data.role === "user") {
-        setErrorMessage(null);
-        SetUserInfo(res.data);
+      if (res.data.status === 200 && res.data.user.role === "user") {
+        saveToLocalStorage("token", res.data.token);
+        SetUserInfo(res.data.user);
         navigate("/shop");
       }
       // Admin route
-      if (res.data.status === 200 && res.data.role === "admin") {
+      if (res.data.status === 200 && res.data.user.role === "admin") {
         setErrorMessage(null);
-        SetUserInfo(res.data);
+        saveToLocalStorage("token", res.data.token);
+        SetUserInfo(res.data.user);
         navigate("/admin");
       }
 

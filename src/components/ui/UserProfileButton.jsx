@@ -11,6 +11,8 @@ import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import { useState } from "react";
 import { UseWindowResize } from "../../hooks/UseWindowResize";
 import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { UserContext } from "../../context/UserContext";
 
 export const UserProfileButton = ({ user }) => {
   // State and functions for handling menu open/close
@@ -20,6 +22,9 @@ export const UserProfileButton = ({ user }) => {
 
   // Function to close menu upon window resize
   UseWindowResize(handleCloseMenu);
+
+  // Consume UserContext
+  const { LogOut } = useContext(UserContext);
 
   const linkStyle = {
     color: color.black,
@@ -42,7 +47,7 @@ export const UserProfileButton = ({ user }) => {
           },
         }}
       >
-        {user.firstname}
+        {user.fname}
       </Button>
 
       {/* Account menu */}
@@ -59,12 +64,12 @@ export const UserProfileButton = ({ user }) => {
           horizontal: "right",
         }}
       >
-        <Link style={linkStyle} to="/">
+        <Link style={linkStyle}>
           <MenuItem>Profile</MenuItem>
         </Link>
 
-        <Link style={linkStyle} to="/">
-          <MenuItem>Logout</MenuItem>
+        <Link style={linkStyle} to="/home">
+          <MenuItem onClick={LogOut}>Logout</MenuItem>
         </Link>
       </Menu>
     </>

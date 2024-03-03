@@ -34,7 +34,7 @@ export const useCartState = () => {
                 }
               : i // 10 refers to base 10
         );
-        saveToLocalStorage("token", res.data.token);
+        saveToLocalStorage("cartList", updatedCartList);
 
         return updatedCartList;
       } else {

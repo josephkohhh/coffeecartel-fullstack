@@ -11,7 +11,7 @@ import { useState } from "react";
 import { UseWindowResize } from "../../hooks/UseWindowResize";
 import { Link } from "react-router-dom";
 
-export const MobileMenu = () => {
+export const MobileMenu = ({ user, LogOut }) => {
   // State and functions for handling menu open/close
   const [anchorEl, setAnchorEl] = useState(null);
   const handleOpenMenu = (event) => setAnchorEl(event.currentTarget);
@@ -57,26 +57,55 @@ export const MobileMenu = () => {
       </Menu>
 
       {/* Sub menu for account link */}
-      <Menu
-        anchorEl={subAnchorEl}
-        open={Boolean(subAnchorEl)}
-        onClose={handleCloseSubMenu}
-        anchorOrigin={{
-          vertical: "top",
-          horizontal: "left",
-        }}
-        transformOrigin={{
-          vertical: "top",
-          horizontal: "right",
-        }}
-      >
-        <Link style={linkStyle} to="/login">
-          <MenuItem>Login</MenuItem>
-        </Link>
-        <Link style={linkStyle} to="/register">
-          <MenuItem>Sign Up</MenuItem>
-        </Link>
-      </Menu>
+      {user.fname ? (
+        <>
+          {/* Logged in account menu */}
+          <Menu
+            anchorEl={subAnchorEl}
+            open={Boolean(subAnchorEl)}
+            onClose={handleCloseSubMenu}
+            anchorOrigin={{
+              vertical: "top",
+              horizontal: "left",
+            }}
+            transformOrigin={{
+              vertical: "top",
+              horizontal: "right",
+            }}
+          >
+            <Link style={linkStyle}>
+              <MenuItem>Profile</MenuItem>
+            </Link>
+
+            <Link style={linkStyle} to="/home">
+              <MenuItem onClick={LogOut}>Logout</MenuItem>
+            </Link>
+          </Menu>
+        </>
+      ) : (
+        <>
+          <Menu
+            anchorEl={subAnchorEl}
+            open={Boolean(subAnchorEl)}
+            onClose={handleCloseSubMenu}
+            anchorOrigin={{
+              vertical: "top",
+              horizontal: "left",
+            }}
+            transformOrigin={{
+              vertical: "top",
+              horizontal: "right",
+            }}
+          >
+            <Link style={linkStyle} to="/login">
+              <MenuItem>Login</MenuItem>
+            </Link>
+            <Link style={linkStyle} to="/register">
+              <MenuItem>Sign Up</MenuItem>
+            </Link>
+          </Menu>
+        </>
+      )}
     </>
   );
 };

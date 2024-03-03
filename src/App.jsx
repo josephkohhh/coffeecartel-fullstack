@@ -14,7 +14,10 @@ import { About } from "./pages/About";
 import { Login } from "./pages/Login";
 import { Register } from "./pages/Register";
 import { Admin } from "./pages/Admin";
-import { PrivateRoute } from "./utils/PrivateRoute";
+import { Forbidden } from "./pages/Forbidden";
+import { AdminRoute } from "./utils/AdminRoute";
+import { UserRoute } from "./utils/UserRoute";
+import { PublicRoute } from "./utils/PublicRoute";
 import { CartContextProvider } from "./context/CartContext";
 import { UserContextProvider } from "./context/UserContext";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
@@ -26,20 +29,27 @@ function App() {
         <ThemeProvider theme={FontTheme}>
           <Router>
             <Routes>
-              {/* Default route */}
-              <Route path="/" element={<Shop />} />
+              {/* Forbidden route */}
+              <Route path="/forbidden" element={<Forbidden />} />
 
-              {/* Respective route */}
-              <Route path="/home" element={<Home />} />
-              <Route path="/shop" element={<Shop />} />
-              <Route path="/about" element={<About />} />
-              <Route path="/login" element={<Login />} />
-              <Route path="/register" element={<Register />} />
+              {/* Public route */}
+              <Route element={<PublicRoute />}>
+                <Route path="/login" element={<Login />} />
+                <Route path="/register" element={<Register />} />
+              </Route>
 
-              {/* Private Route */}
-              <Route element={<PrivateRoute />}>
-                <Route path="/admin" element={<Admin />} />
+              {/* Public and user route */}
+              <Route element={<UserRoute />}>
+                <Route path="/" element={<Home />} />
+                <Route path="/home" element={<Home />} />
+                <Route path="/shop" element={<Shop />} />
+                <Route path="/about" element={<About />} />
                 <Route path="/cart" element={<Cart />} />
+              </Route>
+
+              {/* Admin Route */}
+              <Route element={<AdminRoute />}>
+                <Route path="/admin" element={<Admin />} />
               </Route>
             </Routes>
           </Router>

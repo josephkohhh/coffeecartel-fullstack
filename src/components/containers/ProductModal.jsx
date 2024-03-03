@@ -4,7 +4,7 @@
  * Description: Represents a product modal
  */
 
-import { Modal, Box, Stack, Typography, Button } from "@mui/material";
+import { Modal, Box, Stack, Typography } from "@mui/material";
 import { color } from "../../data/constants";
 import { CategoryButton } from "../ui/CategoryButton";
 import { CloseButton } from "../ui/CloseButton";
@@ -13,6 +13,8 @@ import { AddToCartButton } from "../ui/AddToCartButton";
 import { UseWindowResize } from "../../hooks/UseWindowResize";
 import { useContext } from "react";
 import { CartContext } from "../../context/CartContext";
+import { UserContext } from "../../context/UserContext";
+import { useNavigate } from "react-router-dom";
 
 export const ProductModal = ({ product, openModal, handleCloseModal }) => {
   const modalStyle = {
@@ -32,11 +34,19 @@ export const ProductModal = ({ product, openModal, handleCloseModal }) => {
 
   // Consume CartContext
   const { AddToCartList } = useContext(CartContext);
+  // Consume UserContext
+  const { user } = useContext(UserContext);
+
+  const navigate = useNavigate(); // Create an instance of useNavigate
 
   // Function to handle cart submission
   const handleAddToCart = () => {
-    AddToCartList(product);
-    handleCloseModal();
+    if (!user.fname) {
+      navigate("/login");
+    } else {
+      AddToCartList(product);
+      handleCloseModal();
+    }
   };
 
   // Function to close modal upon window resize

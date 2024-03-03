@@ -13,14 +13,14 @@ export const UserContext = createContext();
 // Context Provider
 export const UserContextProvider = ({ children }) => {
   // Get state/functions from useUserState hook
-  const { user, setUser, SetUserInfo } = useUserState();
+  const { user, SetUserInfo, LogOut } = useUserState();
 
   return (
     <UserContext.Provider
       value={{
         user,
-        setUser,
         SetUserInfo,
+        LogOut,
       }}
     >
       {children}

@@ -5,6 +5,7 @@
  */
 
 import axios from "axios";
+import { getFromLocalStorage } from "../services/LocalStorage";
 
 // Login API call
 export const Login = async (data) => {
@@ -27,7 +28,11 @@ export const Register = async (data) => {
 // Verify user API call
 export const Authenticate = async () => {
   try {
-    return await axios.get("http://localhost:3000/protected");
+    return await axios.get("http://localhost:3000/protected", {
+      headers: {
+        Authorization: `Bearer ${getFromLocalStorage("token") || ""}`,
+      },
+    });
   } catch (error) {
     throw error;
   }

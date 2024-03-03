@@ -12,7 +12,7 @@ import { useState } from "react";
 import { UseWindowResize } from "../../hooks/UseWindowResize";
 import { Link } from "react-router-dom";
 
-export const AccountNavButton = () => {
+export const AccountNavButton = ({ user, LogOut }) => {
   // State and functions for handling menu open/close
   const [anchorEl, setAnchorEl] = useState(null);
   const handleOpenMenu = (event) => setAnchorEl(event.currentTarget);
@@ -25,6 +25,7 @@ export const AccountNavButton = () => {
     color: color.black,
     textDecoration: "none",
   };
+
   return (
     <>
       {/* Account nav button */}
@@ -42,31 +43,61 @@ export const AccountNavButton = () => {
           },
         }}
       >
-        Account
+        {user.fname ? user.fname : "Account"}
       </Button>
 
       {/* Account menu */}
-      <Menu
-        anchorEl={anchorEl}
-        open={Boolean(anchorEl)}
-        onClose={handleCloseMenu}
-        anchorOrigin={{
-          vertical: "bottom",
-          horizontal: "right",
-        }}
-        transformOrigin={{
-          vertical: "top",
-          horizontal: "right",
-        }}
-      >
-        <Link style={linkStyle} to="/login">
-          <MenuItem>Login</MenuItem>
-        </Link>
+      {user.fname ? (
+        <>
+          {/* Logged in account menu */}
+          <Menu
+            anchorEl={anchorEl}
+            open={Boolean(anchorEl)}
+            onClose={handleCloseMenu}
+            anchorOrigin={{
+              vertical: "bottom",
+              horizontal: "right",
+            }}
+            transformOrigin={{
+              vertical: "top",
+              horizontal: "right",
+            }}
+          >
+            <Link style={linkStyle}>
+              <MenuItem>Profile</MenuItem>
+            </Link>
 
-        <Link style={linkStyle} to="/register">
-          <MenuItem>Sign Up</MenuItem>
-        </Link>
-      </Menu>
+            <Link style={linkStyle} to="/home">
+              <MenuItem onClick={LogOut}>Logout</MenuItem>
+            </Link>
+          </Menu>
+        </>
+      ) : (
+        <>
+          {/* Not logged in account menu */}
+          <Menu
+            anchorEl={anchorEl}
+            open={Boolean(anchorEl)}
+            onClose={handleCloseMenu}
+            anchorOrigin={{
+              vertical: "bottom",
+              horizontal: "right",
+            }}
+            transformOrigin={{
+              vertical: "top",
+              horizontal: "right",
+            }}
+          >
+            <Link style={linkStyle} to="/login">
+              <MenuItem>Login</MenuItem>
+            </Link>
+
+            <Link style={linkStyle} to="/register">
+              <MenuItem>Sign Up</MenuItem>
+            </Link>
+          </Menu>
+        </>
+      )}
     </>
   );
 };

@@ -13,7 +13,13 @@ import { NavButtonLinks } from "../ui/NavButtonLinks";
 import { MobileMenu } from "../ui/MobileMenu";
 import { Link } from "react-router-dom";
 
+import { useContext } from "react";
+import { UserContext } from "../../context/UserContext";
+
 export const Navbar = () => {
+  // Consume UserContext
+  const { user, LogOut } = useContext(UserContext);
+
   return (
     <AppBar
       elevation={0}
@@ -44,7 +50,7 @@ export const Navbar = () => {
               <CartNavButton />
             </Link>
 
-            <AccountNavButton />
+            <AccountNavButton user={user} LogOut={LogOut} />
           </Stack>
           {/* Top layer nav (mobile) */}
           <Stack
@@ -52,7 +58,7 @@ export const Navbar = () => {
             justifyContent="flex-end"
             display={{ xs: "flex", sm: "none" }}
           >
-            <MobileMenu />
+            <MobileMenu user={user} LogOut={LogOut} />
           </Stack>
 
           {/* Middle layer nav */}

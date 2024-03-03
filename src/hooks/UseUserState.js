@@ -14,10 +14,8 @@ import { useState } from "react";
 export const useUserState = () => {
   // State and functions
   const [user, setUser] = useState({
-    token: "",
-    role: "",
-    firstname: "",
-    lastname: "",
+    fname: "",
+    lname: "",
     address: "",
   });
 
@@ -25,19 +23,25 @@ export const useUserState = () => {
   const SetUserInfo = (user) => {
     setUser((prev) => ({
       ...prev,
-      token: user.token,
-      role: user.role,
-      firstname: user.firstname,
-      lastname: user.lastname,
+      fname: user.fname,
+      lname: user.lname,
       address: user.address,
     }));
+  };
 
-    saveToLocalStorage("token", user.token);
+  // Function to log out
+  const LogOut = () => {
+    setUser({
+      fname: "",
+      lname: "",
+      address: "",
+    });
+    clearFromLocalStorage("token");
   };
 
   return {
     user,
-    setUser,
     SetUserInfo,
+    LogOut,
   };
 };
