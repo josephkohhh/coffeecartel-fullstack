@@ -145,6 +145,10 @@ export const RegisterForm = () => {
               type="text"
               {...register("username", {
                 required: "Username is required",
+                minLength: {
+                  value: 8,
+                  message: "Username must be at least 8 characters long",
+                },
               })}
               error={!!errors.username}
               helperText={errors.username?.message}
