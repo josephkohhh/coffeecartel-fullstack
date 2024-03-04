@@ -11,7 +11,7 @@ import { getFromLocalStorage } from "../services/LocalStorage";
 export const Login = async (data) => {
   try {
     return await axios.post(
-      "https://charming-gaufre-70005c.netlify.app/login",
+      "https://superlative-creponne-554384.netlify.app/login",
       data
     );
   } catch (error) {
@@ -23,7 +23,7 @@ export const Login = async (data) => {
 export const Register = async (data) => {
   try {
     return await axios.post(
-      "https://charming-gaufre-70005c.netlify.app/register",
+      "https://superlative-creponne-554384.netlify.app/register",
       data
     );
   } catch (error) {
@@ -35,7 +35,7 @@ export const Register = async (data) => {
 export const Authenticate = async () => {
   try {
     return await axios.get(
-      "https://charming-gaufre-70005c.netlify.app/protected",
+      "https://superlative-creponne-554384.netlify.app/protected",
       {
         headers: {
           Authorization: `Bearer ${getFromLocalStorage("token") || ""}`,
