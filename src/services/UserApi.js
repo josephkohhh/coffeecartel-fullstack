@@ -10,7 +10,10 @@ import { getFromLocalStorage } from "../services/LocalStorage";
 // Login API call
 export const Login = async (data) => {
   try {
-    return await axios.post("http://localhost:3000/login", data);
+    return await axios.post(
+      "https://charming-gaufre-70005c.netlify.app/login",
+      data
+    );
   } catch (error) {
     throw error;
   }
@@ -19,7 +22,10 @@ export const Login = async (data) => {
 // Register API call
 export const Register = async (data) => {
   try {
-    return await axios.post("http://localhost:3000/register", data);
+    return await axios.post(
+      "https://charming-gaufre-70005c.netlify.app/register",
+      data
+    );
   } catch (error) {
     throw error;
   }
@@ -28,11 +34,14 @@ export const Register = async (data) => {
 // Verify user API call
 export const Authenticate = async () => {
   try {
-    return await axios.get("http://localhost:3000/protected", {
-      headers: {
-        Authorization: `Bearer ${getFromLocalStorage("token") || ""}`,
-      },
-    });
+    return await axios.get(
+      "https://charming-gaufre-70005c.netlify.app/protected",
+      {
+        headers: {
+          Authorization: `Bearer ${getFromLocalStorage("token") || ""}`,
+        },
+      }
+    );
   } catch (error) {
     throw error;
   }
