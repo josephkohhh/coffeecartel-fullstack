@@ -10,10 +10,7 @@ import { getFromLocalStorage } from "../services/LocalStorage";
 // Login API call
 export const Login = async (data) => {
   try {
-    return await axios.post(
-      "https://superlative-creponne-554384.netlify.app/login",
-      data
-    );
+    return await axios.post("asdsadasds/login", data);
   } catch (error) {
     throw error;
   }
