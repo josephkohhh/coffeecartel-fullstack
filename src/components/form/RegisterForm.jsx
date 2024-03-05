@@ -8,6 +8,7 @@ import { Stack, Typography, Paper, TextField } from "@mui/material";
 import { color } from "../../data/constants";
 import { AccessButton } from "../ui/AccessButton";
 import { ErrorMessage } from "../ui/ErrorMessage";
+import { SuccessMessage } from "../ui/SuccessMessage";
 import { Link } from "react-router-dom";
 import IconButton from "@mui/material/IconButton";
 import InputAdornment from "@mui/material/InputAdornment";
@@ -34,6 +35,7 @@ export const RegisterForm = () => {
 
   // Register message state
   const [errorMessage, setErrorMessage] = useState(null);
+  const [successMessage, setSuccessMessage] = useState(null);
 
   // React Hook Form
   const {
@@ -56,7 +58,7 @@ export const RegisterForm = () => {
       // Success
       if (res.data.status === 201) {
         setErrorMessage(null);
-        //... put a success snackbar and reroute to login
+        setSuccessMessage("Account created successfully!");
       }
 
       // Fail
@@ -195,6 +197,10 @@ export const RegisterForm = () => {
 
             {/* Error message */}
             {errorMessage && <ErrorMessage>{errorMessage}</ErrorMessage>}
+            {/* Success message */}
+            {successMessage && (
+              <SuccessMessage>{successMessage}</SuccessMessage>
+            )}
 
             {/* Register button */}
             <AccessButton type="submit" loading={loading}>
