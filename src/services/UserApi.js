@@ -7,12 +7,13 @@
 import axios from "axios";
 import { getFromLocalStorage } from "../services/LocalStorage";
 
-const url = import.meta.env.EXPRESS_APP_API_URL;
-
 // Login API call
 export const Login = async (data) => {
   try {
-    return await axios.post(`${url}/login`, data);
+    return await axios.post(
+      `https://coffeecartel-api.onrender.com/login`,
+      data
+    );
   } catch (error) {
     throw error;
   }
@@ -21,7 +22,10 @@ export const Login = async (data) => {
 // Register API call
 export const Register = async (data) => {
   try {
-    return await axios.post(`${url}/register`, data);
+    return await axios.post(
+      `https://coffeecartel-api.onrender.com/register`,
+      data
+    );
   } catch (error) {
     throw error;
   }
@@ -30,7 +34,7 @@ export const Register = async (data) => {
 // Verify user API call
 export const Authenticate = async () => {
   try {
-    return await axios.get(`${url}/protected`, {
+    return await axios.get(`https://coffeecartel-api.onrender.com/protected`, {
       headers: {
         Authorization: `Bearer ${getFromLocalStorage("token") || ""}`,
       },
