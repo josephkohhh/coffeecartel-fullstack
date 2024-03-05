@@ -7,13 +7,12 @@
 import axios from "axios";
 import { getFromLocalStorage } from "../services/LocalStorage";
 
+const url = import.meta.env.EXPRESS_APP_API_URL;
+
 // Login API call
 export const Login = async (data) => {
   try {
-    return await axios.post(
-      "https://superlative-creponne-554384.netlify.app/login",
-      data
-    );
+    return await axios.post(`${url}/login`, data);
   } catch (error) {
     throw error;
   }
@@ -22,10 +21,7 @@ export const Login = async (data) => {
 // Register API call
 export const Register = async (data) => {
   try {
-    return await axios.post(
-      "https://superlative-creponne-554384.netlify.app/register",
-      data
-    );
+    return await axios.post(`${url}/register`, data);
   } catch (error) {
     throw error;
   }
@@ -34,14 +30,11 @@ export const Register = async (data) => {
 // Verify user API call
 export const Authenticate = async () => {
   try {
-    return await axios.get(
-      "https://superlative-creponne-554384.netlify.app/protected",
-      {
-        headers: {
-          Authorization: `Bearer ${getFromLocalStorage("token") || ""}`,
-        },
-      }
-    );
+    return await axios.get(`${url}/protected`, {
+      headers: {
+        Authorization: `Bearer ${getFromLocalStorage("token") || ""}`,
+      },
+    });
   } catch (error) {
     throw error;
   }

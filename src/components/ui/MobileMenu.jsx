@@ -77,6 +77,10 @@ export const MobileMenu = ({ user, LogOut }) => {
               <MenuItem>Profile</MenuItem>
             </Link>
 
+            <Link style={linkStyle}>
+              <MenuItem>Orders</MenuItem>
+            </Link>
+
             <Link style={linkStyle} to="/home">
               <MenuItem onClick={LogOut}>Logout</MenuItem>
             </Link>
