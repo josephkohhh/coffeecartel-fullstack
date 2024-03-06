@@ -63,7 +63,7 @@ export const AccountNavButton = ({ user, LogOut }) => {
               horizontal: "right",
             }}
           >
-            <Link style={linkStyle}>
+            <Link style={linkStyle} to="/profile">
               <MenuItem>Profile</MenuItem>
             </Link>
 

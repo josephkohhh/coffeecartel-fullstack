@@ -37,3 +37,12 @@ export const Authenticate = async () => {
     throw error;
   }
 };
+
+// Update profile API call
+export const UpdateProfile = async (data) => {
+  try {
+    return await axios.patch(`http://localhost:3000/updateProfile`, data);
+  } catch (error) {
+    throw error;
+  }
+};

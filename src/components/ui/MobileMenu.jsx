@@ -1,7 +1,7 @@
 /*
  * File: MobileMenu.jsx
  * Author: Joseph Koh
- * Description: Represents the nav mobile menu
+ * Description: Represents the nav mobile menu for users
  */
 
 import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
@@ -82,7 +82,7 @@ export const MobileMenu = ({ user, LogOut }) => {
               horizontal: "right",
             }}
           >
-            <Link style={linkStyle}>
+            <Link style={linkStyle} to="/profile">
               <MenuItem>Profile</MenuItem>
             </Link>
 

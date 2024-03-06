@@ -12,6 +12,7 @@ import { Shop } from "./pages/Shop";
 import { Cart } from "./pages/Cart";
 import { About } from "./pages/About";
 import { Login } from "./pages/Login";
+import { Profile } from "./pages/Profile";
 import { Register } from "./pages/Register";
 import { Admin } from "./pages/Admin";
 import { Forbidden } from "./pages/Forbidden";
@@ -40,6 +41,7 @@ function App() {
                 <Route path="/cart" element={<Cart />} />
                 <Route path="/login" element={<Login />} />
                 <Route path="/register" element={<Register />} />
+                <Route path="/profile" element={<Profile />} />
               </Route>
 
               {/* Admin Route */}

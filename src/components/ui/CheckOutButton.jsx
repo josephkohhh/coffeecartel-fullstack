@@ -21,6 +21,7 @@ export const CheckOutButton = ({ onClick, disabled, loading, children }) => {
       sx={{
         width: { xs: "100%", sm: "80%", md: "100%" },
         bgcolor: color.green,
+        "&:hover": { bgcolor: color.darkgreen },
       }}
     >
       {children}

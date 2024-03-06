@@ -13,7 +13,7 @@ import { UserContext } from "../context/UserContext";
 
 export const Admin = () => {
   // Consume UserContext
-  const { user, setUser } = useContext(UserContext);
+  const { user } = useContext(UserContext);
 
   return (
     <Box>
