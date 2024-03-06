@@ -10,7 +10,7 @@ import { getFromLocalStorage } from "../services/LocalStorage";
 // Login API call
 export const Login = async (data) => {
   try {
-    return await axios.post(`http://localhost3000/login`, data);
+    return await axios.post("http://localhost:3000/login", data);
   } catch (error) {
     throw error;
   }
@@ -19,7 +19,7 @@ export const Login = async (data) => {
 // Register API call
 export const Register = async (data) => {
   try {
-    return await axios.post(`http://localhost3000/register`, data);
+    return await axios.post(`http://localhost:3000/register`, data);
   } catch (error) {
     throw error;
   }
@@ -28,7 +28,7 @@ export const Register = async (data) => {
 // Verify user API call
 export const Authenticate = async () => {
   try {
-    return await axios.get(`http://localhost3000/protected`, {
+    return await axios.get(`http://localhost:3000/protected`, {
       headers: {
         Authorization: `Bearer ${getFromLocalStorage("token") || ""}`,
       },

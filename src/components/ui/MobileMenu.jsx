@@ -4,9 +4,9 @@
  * Description: Represents the nav mobile menu
  */
 
-import MenuIcon from "@mui/icons-material/Menu";
+import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
 import { color } from "../../data/constants";
-import { Menu, MenuItem } from "@mui/material";
+import { Menu, MenuItem, Stack, Typography } from "@mui/material";
 import { useState } from "react";
 import { UseWindowResize } from "../../hooks/UseWindowResize";
 import { Link } from "react-router-dom";
@@ -34,14 +34,23 @@ export const MobileMenu = ({ user, LogOut }) => {
   };
   return (
     <>
-      {/* Hamburger menu */}
-      <MenuIcon
-        sx={{
-          display: { xs: "flex", sm: "none" },
-          color: color.black,
-        }}
+      {/* Profile icon menu */}
+      <Stack
+        direction="row"
+        alignItems="center"
+        spacing={0.5}
         onClick={handleOpenMenu}
-      />
+      >
+        <AccountCircleOutlinedIcon
+          sx={{
+            display: { xs: "flex", sm: "none" },
+            color: color.black,
+          }}
+        />
+        <Typography variant="body2" color={color.black}>
+          {user.fname ? user.fname.toUpperCase() : ""}
+        </Typography>
+      </Stack>
 
       {/* Main menu */}
       <Menu
