@@ -1,4 +1,4 @@
-# CoffeeCartel (React/MUI/Express/MySQL)
+# CoffeeCartel (React + Vite / MUI)
 
 This repo contains source code for CoffeeCartel, a responsive online coffee store web app.
 
@@ -119,3 +119,5 @@ coffeecartel-fullstack
 - Login
 - Register
 - View/Edit Profile
+- Admin Panel
+- Route Guard
