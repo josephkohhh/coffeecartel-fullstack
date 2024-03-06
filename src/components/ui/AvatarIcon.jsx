@@ -5,20 +5,23 @@
  */
 
 import { Avatar } from "@mui/material";
+import { useContext } from "react";
+import { UserContext } from "../../context/UserContext";
 
-export const AvatarIcon = () => {
+export const AvatarIcon = ({ sx }) => {
+  // Consume UserContext
+  const { user } = useContext(UserContext);
   return (
     <>
       <Avatar
-        alt="H"
-        sx={{
-          margin: "0 auto",
-          width: { xs: "110px", sm: "150px" },
-          height: { xs: "110px", sm: "150px" },
-          fontSize: { xs: "40px", sm: "60px" },
-        }}
+        alt={
+          user.fname.toUpperCase().charAt(0) +
+          user.lname.toUpperCase().charAt(0)
+        }
+        sx={sx}
       >
-        JK
+        {user.fname.toUpperCase().charAt(0) +
+          user.lname.toUpperCase().charAt(0)}
       </Avatar>
     </>
   );

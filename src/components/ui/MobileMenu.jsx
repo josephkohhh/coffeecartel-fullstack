@@ -4,7 +4,7 @@
  * Description: Represents the nav mobile menu for users
  */
 
-import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
+import { AvatarIcon } from "./AvatarIcon";
 import { color } from "../../data/constants";
 import { Menu, MenuItem, Stack, Typography } from "@mui/material";
 import { useState } from "react";
@@ -41,10 +41,12 @@ export const MobileMenu = ({ user, LogOut }) => {
         spacing={0.5}
         onClick={handleOpenMenu}
       >
-        <AccountCircleOutlinedIcon
+        <AvatarIcon
           sx={{
-            display: { xs: "flex", sm: "none" },
-            color: color.black,
+            width: "24px",
+            height: "24px",
+            fontSize: "12px",
+            bgcolor: color.lightChocolate,
           }}
         />
         <Typography variant="body2" color={color.black}>

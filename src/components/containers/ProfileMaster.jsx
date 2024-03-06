@@ -37,7 +37,15 @@ export const ProfileMaster = () => {
           </Grid>
 
           <Grid item xs={12} sm={5} paddingY={2}>
-            <AvatarIcon />
+            <AvatarIcon
+              sx={{
+                margin: "0 auto",
+                width: { xs: "110px", sm: "150px" },
+                height: { xs: "110px", sm: "150px" },
+                fontSize: { xs: "40px", sm: "60px" },
+                bgcolor: color.lightChocolate,
+              }}
+            />
           </Grid>
 
           <Grid item xs={12} sm={7}>

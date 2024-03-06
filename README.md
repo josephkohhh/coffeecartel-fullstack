@@ -1,4 +1,4 @@
-# CoffeeCartel (React + Vite)
+# CoffeeCartel (React/MUI/Express/MySQL)
 
 This repo contains source code for CoffeeCartel, a responsive online coffee store web app.
 
@@ -30,10 +30,14 @@ npm install
 ## Folder Structure
 
 ```
-coffeecartel-frontend
+coffeecartel-fullstack
 ├─ .eslintrc.cjs
+├─ .git
+├─ .gitattributes
 ├─ .gitignore
 ├─ index.html
+├─ main.jsx
+├─ netlify.toml
 ├─ package-lock.json
 ├─ package.json
 ├─ README.md
@@ -41,33 +45,41 @@ coffeecartel-frontend
 │  └─ products
 │     ├─ Almondmilk-Mocha.png
 │     ├─ Americano.png
+│     ├─ Arabica-Coffee-Bean.png
 │     └─ ...
 ├─ src
-│  ├─ main.jsx
 │  ├─ App.css
 │  ├─ App.jsx
 │  ├─ assets
 │  │  ├─ brand-logo.png
+│  │  ├─ cc-banner.PNG
 │  │  ├─ coffee-stand.png
 │  │  └─ ...
 │  ├─ components
 │  │  ├─ containers
+│  │  │  ├─ AdminMaster.jsx
 │  │  │  ├─ CartBox.jsx
 │  │  │  ├─ CartList.jsx
 │  │  │  └─ ...
 │  │  ├─ form
+│  │  │  ├─ LoginForm.jsx
+│  │  │  ├─ ProfileForm.jsx
+│  │  │  ├─ RegisterForm.jsx
 │  │  │  └─ Search.jsx
 │  │  ├─ layout
+│  │  │  ├─ AdminNavbar.jsx
 │  │  │  ├─ FilterButtonDrawer.jsx
 │  │  │  ├─ Footer.jsx
 │  │  │  ├─ Navbar.jsx
 │  │  │  └─ SideMenu.jsx
 │  │  └─ ui
+│  │     ├─ AccessButton.jsx
 │  │     ├─ AccordionDiagram.jsx
 │  │     ├─ AccountNavButton.jsx
 │  │     └─ ...
 │  ├─ context
-│  │  └─ CartContext.jsx
+│  │  ├─ CartContext.jsx
+│  │  └─ UserContext.jsx
 │  ├─ data
 │  │  ├─ constants.js
 │  │  └─ products.js
@@ -77,19 +89,23 @@ coffeecartel-frontend
 │  │  └─ ...
 │  ├─ hooks
 │  │  ├─ UseCartState.js
+│  │  ├─ UseUserState.js
 │  │  └─ UseWindowResize.js
 │  ├─ pages
 │  │  ├─ About.jsx
 │  │  ├─ Cart.jsx
-│  │  ├─ Home.jsx
-│  │  └─ Shop.jsx
+│  │  ├─ Forbidden.jsx
+│  │  └─ ...
 │  ├─ services
-│  │  └─ LocalStorage.js
+│  │  ├─ LocalStorage.js
+│  │  └─ UserApi.js
 │  ├─ theme
 │  │  └─ FontTheme.js
 │  └─ utils
-│     ├─ CalculateOrder.js
-│     └─ Filter.js
+│     ├─ AdminRoute.jsx
+│     ├─ Delay.js
+│     ├─ Filter.js
+│     └─ ...
 └─ vite.config.js
 
 ```
@@ -100,3 +116,6 @@ coffeecartel-frontend
 - Filter Products
 - Cart (CRUD)
 - Cart Saved to Local Storage
+- Login
+- Register
+- View/Edit Profile
