@@ -15,13 +15,13 @@ export const CheckOutButton = ({ onClick, disabled, loading, children }) => {
       disableRipple
       variant="contained"
       size="large"
-      disabled={disabled || loading}
+      disabled={disabled}
       loading={loading}
       onClick={onClick}
       sx={{
         width: { xs: "100%", sm: "80%", md: "100%" },
         bgcolor: color.green,
-        "&:hover": { color: color.white, bgcolor: color.darkgreen },
+        "&:hover": { bgcolor: color.darkgreen },
       }}
     >
       {children}

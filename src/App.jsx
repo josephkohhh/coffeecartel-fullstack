@@ -12,12 +12,12 @@ import { Shop } from "./pages/Shop";
 import { Cart } from "./pages/Cart";
 import { About } from "./pages/About";
 import { Login } from "./pages/Login";
+import { Profile } from "./pages/Profile";
 import { Register } from "./pages/Register";
 import { Admin } from "./pages/Admin";
 import { Forbidden } from "./pages/Forbidden";
 import { AdminRoute } from "./utils/AdminRoute";
 import { UserRoute } from "./utils/UserRoute";
-import { PublicRoute } from "./utils/PublicRoute";
 import { CartContextProvider } from "./context/CartContext";
 import { UserContextProvider } from "./context/UserContext";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
@@ -32,12 +32,6 @@ function App() {
               {/* Forbidden route */}
               <Route path="/forbidden" element={<Forbidden />} />
 
-              {/* Public route */}
-              <Route element={<PublicRoute />}>
-                <Route path="/login" element={<Login />} />
-                <Route path="/register" element={<Register />} />
-              </Route>
-
               {/* Public and user route */}
               <Route element={<UserRoute />}>
                 <Route path="/" element={<Home />} />
@@ -45,6 +39,9 @@ function App() {
                 <Route path="/shop" element={<Shop />} />
                 <Route path="/about" element={<About />} />
                 <Route path="/cart" element={<Cart />} />
+                <Route path="/login" element={<Login />} />
+                <Route path="/register" element={<Register />} />
+                <Route path="/profile" element={<Profile />} />
               </Route>
 
               {/* Admin Route */}

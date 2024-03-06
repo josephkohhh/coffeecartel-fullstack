@@ -1,7 +1,7 @@
 /*
  * File: UserProfileButton.jsx
  * Author: Joseph Koh
- * Description: Represents the user profile button
+ * Description: Represents the Admin profile button
  */
 
 import { Button, Menu, MenuItem } from "@mui/material";
@@ -64,7 +64,7 @@ export const UserProfileButton = ({ user }) => {
           horizontal: "right",
         }}
       >
-        <Link style={linkStyle}>
+        <Link style={linkStyle} to="/profile">
           <MenuItem>Profile</MenuItem>
         </Link>
 

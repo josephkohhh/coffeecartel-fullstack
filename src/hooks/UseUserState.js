@@ -14,8 +14,10 @@ import { useState } from "react";
 export const useUserState = () => {
   // State and functions
   const [user, setUser] = useState({
+    username: "",
     fname: "",
     lname: "",
+    email: "",
     address: "",
   });
 
@@ -23,8 +25,10 @@ export const useUserState = () => {
   const SetUserInfo = (user) => {
     setUser((prev) => ({
       ...prev,
+      username: user.username,
       fname: user.fname,
       lname: user.lname,
+      email: user.email,
       address: user.address,
     }));
   };
@@ -32,8 +36,10 @@ export const useUserState = () => {
   // Function to log out
   const LogOut = () => {
     setUser({
+      username: "",
       fname: "",
       lname: "",
+      email: "",
       address: "",
     });
     clearFromLocalStorage("token");

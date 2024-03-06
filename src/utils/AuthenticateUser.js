@@ -22,18 +22,19 @@ export const AuthenticateUser = async (setLoading, setAuth, SetUserInfo) => {
       // Success --> dont allow admin to access
       if (res.data.status === 200 && res.data.user.role === "admin") {
         setAuth(false);
-      } else if (res.data.status === 200 && res.data.user.role === "user") {
+      }
+      // Success --> for user
+      else if (res.data.status === 200 && res.data.user.role === "user") {
         SetUserInfo(res.data.user);
         setAuth(true);
       }
-      // Fail
+      // Fail -> for public
       else {
-        setAuth(false);
+        setAuth(true);
       }
     }
   } catch (error) {
-    console.log(error);
-    setAuth(false);
+    setAuth(true);
   } finally {
     setLoading(false);
   }

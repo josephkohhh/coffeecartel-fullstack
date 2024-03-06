@@ -12,7 +12,6 @@ import { Logo } from "../ui/Logo";
 import { NavButtonLinks } from "../ui/NavButtonLinks";
 import { MobileMenu } from "../ui/MobileMenu";
 import { Link } from "react-router-dom";
-
 import { useContext } from "react";
 import { UserContext } from "../../context/UserContext";
 

@@ -46,7 +46,7 @@ export const UserProfileMenu = () => {
         open={Boolean(anchorEl)}
         onClose={handleCloseMenu}
       >
-        <Link style={linkStyle} to="/cart">
+        <Link style={linkStyle} to="/profile">
           <MenuItem>Profile</MenuItem>
         </Link>
 

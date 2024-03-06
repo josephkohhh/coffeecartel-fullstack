@@ -11,7 +11,7 @@ import { getFromLocalStorage } from "../services/LocalStorage";
 export const Login = async (data) => {
   try {
     return await axios.post(
-      `https://coffeecartel-api.onrender.com/login`,
+      "https://coffeecartel-api.onrender.com/login",
       data
     );
   } catch (error) {
@@ -39,6 +39,18 @@ export const Authenticate = async () => {
         Authorization: `Bearer ${getFromLocalStorage("token") || ""}`,
       },
     });
+  } catch (error) {
+    throw error;
+  }
+};
+
+// Update profile API call
+export const UpdateProfile = async (data) => {
+  try {
+    return await axios.patch(
+      `https://coffeecartel-api.onrender.com/updateProfile`,
+      data
+    );
   } catch (error) {
     throw error;
   }
