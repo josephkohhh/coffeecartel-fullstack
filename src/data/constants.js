@@ -25,7 +25,7 @@ export const navLinks = [
 export const footerLinks = [
   {
     label: "Code",
-    path: "https://github.com/josephkohhh/coffeecartel-frontend.git",
+    path: "https://github.com/josephkohhh/coffeecartel-fullstack.git",
   },
   { label: "Home", path: "/home" },
   { label: "About", path: "/about" },
@@ -67,6 +67,18 @@ export const tableData = [
   {
     feature: "Local Storage",
     description: "Products saved is updated to local storage",
+  },
+  {
+    feature: "Register",
+    description: "Create an account",
+  },
+  {
+    feature: "Login",
+    description: "Login to an account",
+  },
+  {
+    feature: "View/Edit Profile",
+    description: "Fetch profile information",
   },
   {
     feature: "Footer",
@@ -137,8 +149,19 @@ export const CartContextProvider = ({ children }) => {
     </CartContext.Provider>
   );
 };`;
-export const axiosCodeSnippet = ``;
-export const envVarCodeSnippet = ``;
+export const axiosCodeSnippet = `// Login API call
+export const Login = async (data) => {
+  try {
+    return await axios.post("url", data);
+  } catch (error) {
+    throw error;
+  }
+};`;
+export const envVarCodeSnippet = `// Database credentials
+const databaseName = process.env.DATABASE_NAME;
+const username = process.env.DATABASE_USERNAME;
+const password = process.env.DATABASE_PASSWORD;
+const host = process.env.DATABASE_HOST;`;
 export const arrayMapCodeSnippet = `currentProducts.map((product) => (
   <Grid item key={product.id}>
     <Product product={product} />

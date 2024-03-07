@@ -9,6 +9,7 @@ import { useState, useEffect } from "react";
 import { useContext } from "react";
 import { UserContext } from "../context/UserContext";
 import { AuthenticateUser } from "./AuthenticateUser";
+import { LoadingScreen } from "../components/ui/LoadingScreen";
 
 export const UserRoute = () => {
   // Auth and loading state
@@ -24,7 +25,7 @@ export const UserRoute = () => {
   }, []);
 
   return loading ? (
-    <div>loading...</div>
+    <LoadingScreen />
   ) : auth ? (
     <Outlet />
   ) : (
