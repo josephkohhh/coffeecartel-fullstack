@@ -21,6 +21,8 @@ import {
   useCustomHookCodeSnippet,
   useLocalStorageCodeSnippet,
   contextAPICodeSnippet,
+  axiosCodeSnippet,
+  envVarCodeSnippet,
   arrayMapCodeSnippet,
   arrayFilterSliceSortCodeSnippet,
   arraySomeCodeSnippet,
@@ -219,7 +221,7 @@ export const AccordionDiagram = () => {
       </Accordion>
 
       {/* React axios */}
-      {/* <Accordion
+      <Accordion
         expanded={expanded === "panel4"}
         onChange={(event, isExpanded) => handleChange(isExpanded, "panel4")}
       >
@@ -236,16 +238,15 @@ export const AccordionDiagram = () => {
             language={"javascript"}
           />
           <Typography {...fontSizing} style={textAlignStart}>
-            Making asynchronous API calls using Axios to fetch weather data.
-            Each function is designed to handle the API request and return the
-            response data. These functions are housed in a JavaScript file
-            (api.js) for reusability and maintainability.
+            Making asynchronous API calls using Axios to make a POST request.
+            These functions are housed in a JavaScript file (UserApi.js) for
+            reusability and maintainability.
           </Typography>
         </AccordionDetails>
-      </Accordion> */}
+      </Accordion>
 
       {/* Environment variable */}
-      {/* <Accordion
+      <Accordion
         expanded={expanded === "panel5"}
         onChange={(event, isExpanded) => handleChange(isExpanded, "panel5")}
       >
@@ -266,7 +267,7 @@ export const AccordionDiagram = () => {
             to ensure security.
           </Typography>
         </AccordionDetails>
-      </Accordion> */}
+      </Accordion>
 
       {/* Array functions */}
       <Accordion
@@ -352,6 +353,47 @@ export const AccordionDiagram = () => {
             A react UI framework that provides a set of customizable and
             reusable components, styles, and themes following the google
             material design guidelines.
+          </Typography>
+        </AccordionDetails>
+      </Accordion>
+
+      {/* REST API */}
+      <Accordion
+        expanded={expanded === "panel10"}
+        onChange={(event, isExpanded) => handleChange(isExpanded, "panel10")}
+      >
+        <AccordionSummary
+          id="panel10-header"
+          aria-controls="panel10-content"
+          expandIcon={<ExpandMoreIcon />}
+        >
+          <Typography>REST API</Typography>
+        </AccordionSummary>
+        <AccordionDetails>
+          <Typography {...fontSizing} style={textAlignStart}>
+            Using Express framework to build a RESTFUL API to handle request and
+            response from the client.
+          </Typography>
+        </AccordionDetails>
+      </Accordion>
+
+      {/* MySQL */}
+      <Accordion
+        expanded={expanded === "panel11"}
+        onChange={(event, isExpanded) => handleChange(isExpanded, "panel11")}
+      >
+        <AccordionSummary
+          id="panel11-header"
+          aria-controls="panel11-content"
+          expandIcon={<ExpandMoreIcon />}
+        >
+          <Typography>MySQL</Typography>
+        </AccordionSummary>
+        <AccordionDetails>
+          <Typography {...fontSizing} style={textAlignStart}>
+            Using an ORM library, Sequelize to define connection between Express
+            app and MySQL database which is used to store user, product, order
+            and cart data.
           </Typography>
         </AccordionDetails>
       </Accordion>

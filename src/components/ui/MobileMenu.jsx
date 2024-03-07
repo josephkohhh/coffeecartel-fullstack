@@ -89,7 +89,7 @@ export const MobileMenu = ({ user, LogOut }) => {
             </Link>
 
             <Link style={linkStyle}>
-              <MenuItem>Orders</MenuItem>
+              <MenuItem disabled>Orders</MenuItem>
             </Link>
 
             <Link style={linkStyle} to="/home">

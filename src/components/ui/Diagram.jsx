@@ -22,16 +22,6 @@ export const Diagram = ({ src, alt }) => {
         src={src}
         alt={alt}
       />
-
-      {/* Caption */}
-      <Typography
-        sx={{
-          textAlign: "center",
-          fontSize: { xs: ".6rem", sm: ".8rem", md: ".9rem" },
-        }}
-      >
-        Component Diagram
-      </Typography>
     </>
   );
 };

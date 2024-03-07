@@ -14,6 +14,7 @@ export const GoogleLoginButton = ({ onClick }) => {
       variant="contained"
       disableRipple
       disableElevation
+      disabled
       onClick={onClick}
       sx={{
         height: "45px",

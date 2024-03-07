@@ -9,6 +9,7 @@ import { Navbar } from "../components/layout/Navbar";
 import { Footer } from "../components/layout/Footer";
 import { AppTitle } from "../components/ui/AppTitle";
 import componentDiagram from "../assets/component-diagram.png";
+import architectureDiagram from "../assets/architectural-diagram.png";
 import { Diagram } from "../components/ui/Diagram";
 import { TableDiagram } from "../components/ui/TableDiagram";
 import { AccordionDiagram } from "../components/ui/AccordionDiagram";
@@ -30,10 +31,10 @@ export const About = () => {
       >
         <AppTitle>Introducing CoffeeCartel</AppTitle>
         <Typography variant="h6">
-          An online coffee store web app leveraging React and Material UI
-          design. The goal of this app is to reinforce understanding of React's
-          component-based architecture, ensuring a solid grasp of its
-          fundamental concepts
+          An online coffee store web app leveraging React, Material UI, Express
+          and MySql. The goal of this app is to reinforce understanding of
+          React's component-based and Node Express architecture, ensuring a
+          solid grasp of its fundamental concepts
         </Typography>
       </Stack>
 
@@ -44,7 +45,25 @@ export const About = () => {
           width: { xs: "80%", sm: "550px", md: "700px" },
         }}
       >
+        <Diagram src={architectureDiagram} alt="architecture-diagram" />
+        {/* Caption */}
+        <Typography textAlign="center" variant="body2" marginBottom={5}>
+          Architecture Diagram
+        </Typography>
+      </Box>
+
+      {/* Component diagram */}
+      <Box
+        sx={{
+          margin: "auto",
+          width: { xs: "80%", sm: "550px", md: "700px" },
+        }}
+      >
         <Diagram src={componentDiagram} alt="component-diagram" />
+        {/* Caption */}
+        <Typography textAlign="center" variant="body2">
+          Component Diagram
+        </Typography>
       </Box>
 
       {/* Table diagram */}
