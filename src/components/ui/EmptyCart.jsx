@@ -7,7 +7,7 @@
 import { Box, Typography } from "@mui/material";
 import emptyCup from "../../assets/empty-cup.png";
 
-export const EmptyCart = () => {
+export const EmptyCart = ({ children }) => {
   return (
     // Empty cart
     <Box
@@ -23,7 +23,7 @@ export const EmptyCart = () => {
       </Box>
 
       <Typography variant="h6" textAlign="center" marginTop={1.5}>
-        Your Cart is Empty!
+        {children}
       </Typography>
     </Box>
   );

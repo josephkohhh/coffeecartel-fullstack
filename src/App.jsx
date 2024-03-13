@@ -10,6 +10,7 @@ import { ThemeProvider } from "@mui/material/styles";
 import { Home } from "./pages/Home";
 import { Shop } from "./pages/Shop";
 import { Cart } from "./pages/Cart";
+import { Order } from "./pages/Order";
 import { About } from "./pages/About";
 import { Login } from "./pages/Login";
 import { Profile } from "./pages/Profile";
@@ -39,6 +40,7 @@ function App() {
                 <Route path="/shop" element={<Shop />} />
                 <Route path="/about" element={<About />} />
                 <Route path="/cart" element={<Cart />} />
+                <Route path="/order" element={<Order />} />
                 <Route path="/login" element={<Login />} />
                 <Route path="/register" element={<Register />} />
                 <Route path="/profile" element={<Profile />} />

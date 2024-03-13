@@ -36,7 +36,7 @@ export const CartList = ({
       </Stack>
 
       {cartList.length === 0 ? (
-        <EmptyCart />
+        <EmptyCart>Your Cart is Empty</EmptyCart>
       ) : (
         // Cart item(s)
         cartList.map((cartItem, index) => (

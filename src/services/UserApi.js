@@ -7,7 +7,7 @@
 import axios from "axios";
 import { getFromLocalStorage } from "../services/LocalStorage";
 
-// // Login API call
+// Login API call
 export const Login = async (data) => {
   try {
     return await axios.post(
@@ -56,7 +56,7 @@ export const UpdateProfile = async (data) => {
   }
 };
 
-// Login API call
+// // Login API call
 // export const Login = async (data) => {
 //   try {
 //     return await axios.post("http://localhost:3000/login", data);
