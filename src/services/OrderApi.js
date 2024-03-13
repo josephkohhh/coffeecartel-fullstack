@@ -6,15 +6,27 @@
 
 import axios from "axios";
 
-// Order API call
+// Create order API call
 export const AddToOrder = async (cartList, username) => {
   try {
     const data = {
       cartList: cartList,
       username: username,
     };
-    console.log(data);
-    return await axios.post("http://localhost:3000/order", data);
+    return await axios.post("http://localhost:3000/createOrder", data);
+  } catch (error) {
+    throw error;
+  }
+};
+
+// Fetch Order API call
+export const GetOrder = async (username) => {
+  try {
+    return await axios.get("http://localhost:3000/getOrder", {
+      params: {
+        username: username,
+      },
+    });
   } catch (error) {
     throw error;
   }

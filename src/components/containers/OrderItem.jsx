@@ -6,29 +6,36 @@
 
 import { Stack, Box, Typography, Divider } from "@mui/material";
 import { color } from "../../data/constants";
-import productImage from "../../../public/products/Americano.png";
 
-export const OrderItem = () => {
+export const OrderItem = ({ i }) => {
   const imageStyle = {
     boxSizing: "border-box",
     objectFit: "cover",
   };
+  console.log(i);
   return (
     //* Order item container
     <Stack
       direction="column"
       bgcolor={color.white}
       marginY={2}
-      padding={2}
+      paddingY={2}
+      paddingX={3}
       sx={{
         boxShadow: "rgba(0, 0, 0, 0.1) 0px 2px 4px",
         borderRadius: "10px",
       }}
     >
       {/* Status  */}
-      <Stack direction="row" justifyContent="flex-end">
-        <Typography variant="h6" color={color.green} marginBottom={0.5}>
-          Processing
+      <Stack
+        direction="row"
+        justifyContent="space-between"
+        alignItems="center"
+        marginBottom={0.5}
+      >
+        <Typography variant="h6">Order ID: 12345678</Typography>
+        <Typography variant="h6" color={color.green}>
+          {i.status}
         </Typography>
       </Stack>
 
@@ -39,13 +46,14 @@ export const OrderItem = () => {
         {/* Image */}
         <Box
           sx={{
+            width: { xs: "100px", sm: "120px" },
             height: { xs: "100px", sm: "120px" },
             display: "flex",
           }}
         >
           <img
-            src={productImage}
-            width={"100px"}
+            src={i.image}
+            width={"100%"}
             alt="product-image"
             style={imageStyle}
           />
@@ -55,18 +63,22 @@ export const OrderItem = () => {
         <Stack direction="row" flexGrow={1}>
           {/* Name, desc & qty */}
           <Stack direction="column">
-            <Typography variant="h6" noWrap>
-              Americano
+            <Typography
+              width={{ xs: "100px", sm: "200px", md: "250px" }}
+              variant="h6"
+              noWrap
+            >
+              {i.order_item}
             </Typography>
             <Typography variant="body2" color={color.grey}>
-              Lorem ipsum
+              {i.description}
             </Typography>
-            <Typography variant="h6">X 2</Typography>
+            <Typography variant="h6">X {i.quantity}</Typography>
           </Stack>
 
           {/* Price  */}
           <Stack alignItems="flex-end" flexGrow={1}>
-            <Typography variant="h6">$7.00</Typography>
+            <Typography variant="h6">${i.amount}</Typography>
           </Stack>
         </Stack>
       </Stack>
@@ -78,7 +90,7 @@ export const OrderItem = () => {
         spacing={1}
       >
         <Typography variant="body1">Order Total: </Typography>
-        <Typography variant="h5">$30.00</Typography>
+        <Typography variant="h5">${i.total_amount}</Typography>
       </Stack>
 
       <Stack direction="row" justifyContent="flex-end" marginTop={1}>

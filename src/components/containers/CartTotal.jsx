@@ -32,7 +32,7 @@ export const CartTotal = ({ cartList }) => {
   const { ClearCart } = useContext(CartContext);
   const { user } = useContext(UserContext);
 
-  // State and functions to handle is ordering
+  // State and functions to handle ordering
   const [isOrdering, setIsOrdering] = useState(false);
   const HandleOrdering = async (callback) => {
     try {
