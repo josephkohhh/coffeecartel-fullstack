@@ -13,6 +13,9 @@ import { Overlay } from "../ui/Overlay";
 import { SuccessModal } from "../ui/SuccessModal";
 import { useContext } from "react";
 import { CartContext } from "../../context/CartContext";
+import { UserContext } from "../../context/UserContext";
+import { getFromLocalStorage } from "../../services/LocalStorage";
+import { AddToOrder } from "../../services/OrderApi";
 
 export const CartTotal = ({ cartList }) => {
   // State and function to manage subTotal when cartList changes
@@ -25,22 +28,48 @@ export const CartTotal = ({ cartList }) => {
   // Amount
   const gstAmount = 0.09 * subTotal;
 
-  // Consume CartContext
+  // Consume Context
   const { ClearCart } = useContext(CartContext);
+  const { user } = useContext(UserContext);
 
   // State and functions to handle is ordering
   const [isOrdering, setIsOrdering] = useState(false);
-  const HandleOrdering = (callback) => {
-    setIsOrdering(true);
+  const HandleOrdering = async (callback) => {
+    try {
+      setIsOrdering(true);
 
-    // Simulate an order process with setTimeout of 3s
-    setTimeout(() => {
+      const cartList = getFromLocalStorage("cartList") || []; // Get cart list
+
+      const res = await AddToOrder(cartList, user.username); // Order API call
+
+      if (res.data.status === 201) {
+        // Simulate an order process with setTimeout of 3s
+        setTimeout(() => {
+          setIsOrdering(false);
+          ClearCart();
+
+          callback();
+        }, 3000);
+      }
+    } catch (error) {
+      console.log("error: ", error);
       setIsOrdering(false);
-      ClearCart();
-
-      callback();
-    }, 3000);
+    }
   };
+
+  // const HandleOrdering = (callback) => {
+  //   setIsOrdering(true);
+
+  //   const cartList = getFromLocalStorage("cartList") || []; // Get cart list
+
+  //   AddToOrder(cartList, user.username); // Order API call
+
+  //   setTimeout(() => {
+  //     setIsOrdering(false);
+
+  //     callback();
+  //   }, 3000);
+  // };
 
   // State to manage success modal open/close
   const [successModal, setSuccessModal] = useState(false);

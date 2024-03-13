@@ -21,8 +21,11 @@ export const CartBox = ({
   const handleChangeQuantity = (id, event) => {
     let newQuantity = event.target.value;
 
-    // Validation (prevent NaN, below 1 or above 10)
-    if (isNaN(newQuantity) || newQuantity < 1 || newQuantity > 10) {
+    newQuantity = newQuantity.replace(/\D/, ""); // Remove any non-numeric characters
+    newQuantity = parseInt(newQuantity, 10); // Convert the value to an integer
+
+    // Validation (below 1 or above 10)
+    if (newQuantity < 1 || newQuantity > 10) {
       newQuantity = 1;
     }
 

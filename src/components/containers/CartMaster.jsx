@@ -22,8 +22,6 @@ export const CartMaster = () => {
   const { cartList, ClearCart, DeleteCartItem, UpdateCartItemQuantity } =
     useContext(CartContext);
 
-  // State to retrieve cartList
-  // const [initCartList, setInitCartList] = useState(cartList) || [];
   return (
     // CartMaster
     <Box
