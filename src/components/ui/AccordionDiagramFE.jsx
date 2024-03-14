@@ -1,5 +1,5 @@
 /**
- * File: AccordionDiagram.jsx
+ * File: AccordionDiagramFE.jsx
  * Author: Joseph Koh
  * Description: Code snippets and explanations for CoffeeCartel app features
  */
@@ -20,9 +20,9 @@ import {
   useEffectCodeSnippet,
   useCustomHookCodeSnippet,
   useLocalStorageCodeSnippet,
+  reactHookFormCodeSnippet,
   contextAPICodeSnippet,
   axiosCodeSnippet,
-  envVarCodeSnippet,
   arrayMapCodeSnippet,
   arrayFilterSliceSortCodeSnippet,
   arraySomeCodeSnippet,
@@ -32,7 +32,7 @@ import {
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { useState } from "react";
 
-export const AccordionDiagram = () => {
+export const AccordionDiagramFE = () => {
   // Styling for accordion details text
   const textAlignStart = {
     textAlign: "start",
@@ -108,9 +108,8 @@ export const AccordionDiagram = () => {
         <AccordionDetails>
           <ReactSyntaxHighligher code={routerCodeSnippet} language={"jsx"} />
           <Typography {...fontSizing} style={textAlignStart}>
-            Home, Shop and About page will be rendered when the corresponding
-            routes are matched. Shop page is the default route when no path is
-            specified.
+            Routes are set up based on roles. Route guarding is enabled to
+            prevent unauthorized role to access certain page
           </Typography>
         </AccordionDetails>
       </Accordion>
@@ -165,6 +164,31 @@ export const AccordionDiagram = () => {
           <Typography {...fontSizing} style={textAlignStart}>
             Using a custom hook called useCartState to manage the cartlist state
             and functions.
+          </Typography>
+        </AccordionDetails>
+      </Accordion>
+
+      {/* React Hook Form */}
+      <Accordion
+        expanded={expanded === "panel5"}
+        onChange={(event, isExpanded) => handleChange(isExpanded, "panel5")}
+      >
+        <AccordionSummary
+          id="panel5-header"
+          aria-controls="panel5-content"
+          expandIcon={<ExpandMoreIcon />}
+        >
+          <Typography>React Hook Form</Typography>
+        </AccordionSummary>
+        <AccordionDetails>
+          <ReactSyntaxHighligher
+            code={reactHookFormCodeSnippet}
+            language={"jsx"}
+          />
+          <Typography {...fontSizing} style={textAlignStart}>
+            React Hook Form is used for handling form submission and send to the
+            backend. It provides inbuilt input validation and dev tools which
+            are extremely useful.
           </Typography>
         </AccordionDetails>
       </Accordion>
@@ -241,30 +265,6 @@ export const AccordionDiagram = () => {
             Making asynchronous API calls using Axios to make a POST request.
             These functions are housed in a JavaScript file (UserApi.js) for
             reusability and maintainability.
-          </Typography>
-        </AccordionDetails>
-      </Accordion>
-
-      {/* Environment variable */}
-      <Accordion
-        expanded={expanded === "panel5"}
-        onChange={(event, isExpanded) => handleChange(isExpanded, "panel5")}
-      >
-        <AccordionSummary
-          id="panel5-header"
-          aria-controls="panel5-content"
-          expandIcon={<ExpandMoreIcon />}
-        >
-          <Typography>Environment Variables</Typography>
-        </AccordionSummary>
-        <AccordionDetails>
-          <ReactSyntaxHighligher
-            code={envVarCodeSnippet}
-            language={"javascript"}
-          />
-          <Typography {...fontSizing} style={textAlignStart}>
-            Storing sensitive information in a server-side environment variable
-            to ensure security.
           </Typography>
         </AccordionDetails>
       </Accordion>
@@ -353,47 +353,6 @@ export const AccordionDiagram = () => {
             A react UI framework that provides a set of customizable and
             reusable components, styles, and themes following the google
             material design guidelines.
-          </Typography>
-        </AccordionDetails>
-      </Accordion>
-
-      {/* REST API */}
-      <Accordion
-        expanded={expanded === "panel10"}
-        onChange={(event, isExpanded) => handleChange(isExpanded, "panel10")}
-      >
-        <AccordionSummary
-          id="panel10-header"
-          aria-controls="panel10-content"
-          expandIcon={<ExpandMoreIcon />}
-        >
-          <Typography>REST API</Typography>
-        </AccordionSummary>
-        <AccordionDetails>
-          <Typography {...fontSizing} style={textAlignStart}>
-            Using Express framework to build a RESTFUL API to handle request and
-            response from the client.
-          </Typography>
-        </AccordionDetails>
-      </Accordion>
-
-      {/* MySQL */}
-      <Accordion
-        expanded={expanded === "panel11"}
-        onChange={(event, isExpanded) => handleChange(isExpanded, "panel11")}
-      >
-        <AccordionSummary
-          id="panel11-header"
-          aria-controls="panel11-content"
-          expandIcon={<ExpandMoreIcon />}
-        >
-          <Typography>MySQL</Typography>
-        </AccordionSummary>
-        <AccordionDetails>
-          <Typography {...fontSizing} style={textAlignStart}>
-            Using an ORM library, Sequelize to define connection between Express
-            app and MySQL database which is used to store user, product, order
-            and cart data.
           </Typography>
         </AccordionDetails>
       </Accordion>
