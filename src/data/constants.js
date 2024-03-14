@@ -45,10 +45,6 @@ export const categoryLinks = [
 // Data stored in app features table
 export const tableData = [
   {
-    feature: "Navbar",
-    description: "Top app bar to navigate around",
-  },
-  {
     feature: "Search",
     description: "Search for products",
   },
@@ -60,14 +56,7 @@ export const tableData = [
     feature: "Pagination",
     description: "Limit up to 12 products per page",
   },
-  {
-    feature: "Cart",
-    description: "Add, update, delete, clear products from cart",
-  },
-  {
-    feature: "Local Storage",
-    description: "Products saved is updated to local storage",
-  },
+
   {
     feature: "Register",
     description: "Create an account",
@@ -81,8 +70,20 @@ export const tableData = [
     description: "Fetch profile information",
   },
   {
-    feature: "Footer",
-    description: "Bottom app bar to navigate around",
+    feature: "Cart",
+    description: "Add, update, delete, clear products from cart",
+  },
+  {
+    feature: "Local Storage",
+    description: "Products saved is updated to local storage",
+  },
+  {
+    feature: "View Orders",
+    description: "Fetch order information",
+  },
+  {
+    feature: "Role Based Access Control System ",
+    description: "Defines admin, user and visitor role",
   },
   {
     feature: "Responsiveness",
@@ -93,13 +94,26 @@ export const tableData = [
 // Code snippets stored in variables
 export const routerCodeSnippet = `<Router>
   <Routes>
-    {/* Default route */}
-    <Route path="/" element={<Shop />} />
-    {/* Respective route */}
-    <Route path="/home" element={<Home />} />
-    <Route path="/shop" element={<Shop />} />
-    <Route path="/cart" element={<Cart />} />
-    <Route path="/about" element={<About />} />
+    {/* Forbidden route */}
+    <Route path="/forbidden" element={<Forbidden />} />
+
+    {/* Public and user route */}
+    <Route element={<UserRoute />}>
+      <Route path="/" element={<Home />} />
+      <Route path="/home" element={<Home />} />
+      <Route path="/shop" element={<Shop />} />
+      <Route path="/about" element={<About />} />
+      <Route path="/cart" element={<Cart />} />
+      <Route path="/order" element={<Order />} />
+      <Route path="/login" element={<Login />} />
+      <Route path="/register" element={<Register />} />
+      <Route path="/profile" element={<Profile />} />
+    </Route>
+
+    {/* Admin Route */}
+    <Route element={<AdminRoute />}>
+      <Route path="/admin" element={<Admin />} />
+    </Route>
   </Routes>
 </Router>`;
 export const useStateCodeSnippet = `const [anchorEl, setAnchorEl] = useState(null);
@@ -132,6 +146,45 @@ export const saveToLocalStorage = (key, value) =>
 
 // Delete
 export const clearFromLocalStorage = (key) => localStorage.removeItem(key);`;
+export const reactHookFormCodeSnippet = `// React Hook Form
+const {
+  register,
+  handleSubmit,
+  formState: { errors },
+} = useForm();
+
+<form onSubmit={handleSubmit(submitLogin)}>
+  <Stack>
+    <TextField
+      type="text"
+      label="Username"
+      {...register("username", {
+        required: "Username is required",
+      })}
+      error={!!errors.username}
+      helperText={errors.username?.message}
+    />
+
+    <TextField
+      type="password"
+      label="Password"
+      {...register("password", {
+        required: "Password is required",
+        minLength: {
+          value: 8,
+          message: "Password must be at least 8 characters long",
+        },
+      })}
+      error={!!errors.password}
+      helperText={errors.password?.message}
+    />
+
+    <AccessButton type="submit" loading={loading}>
+      Login
+    </AccessButton>
+  </Stack>  
+</form>
+`;
 export const contextAPICodeSnippet = `export const CartContext = createContext();
 
 export const CartContextProvider = ({ children }) => {
@@ -190,3 +243,58 @@ export const viteDevCodeSnippet = `npm run dev`;
 export const viteProdCodeSnippet = `npm run build`;
 export const muiCodeSnippet = `npm install @mui/material @emotion/react @emotion/styled
 npm install @mui/icons-material`;
+export const expressAPICodeSnippet = `import express from "express";
+import cors from "cors";
+import routes from "./routes/root.mjs";
+
+const app = express(); 
+
+const port = process.env.PORT || 3000;
+
+app.use(express.json()); 
+
+app.use(routes); 
+
+app.listen(port, () =>
+  console.log("Server started up listening on port", port)
+);
+`;
+export const hashingCodeSnippet = `export const hashPassword = async (password) => {
+  try {
+    const saltRounds = 15;
+    const salt = await bcrypt.genSalt(saltRounds);
+    const hashPassword = await bcrypt.hash(password, salt);
+    return hashPassword;
+  } catch (error) {
+    console.error("Error encrypting password: ", error);
+    throw new Error("Error encrypting password");
+  }
+};`;
+export const corsCodeSnippet = `const whiteListUrl = process.env.WHITELIST_URL;
+
+app.use(
+  cors({
+    origin: whiteListUrl,
+  })
+);`;
+
+export const jwtCodeSnippet = `import jwt from "jsonwebtoken";
+
+export const secretKey = process.env.SECRET_KEY;
+
+const token = jwt.sign(userData, secretKey);
+
+return res.json({
+  status: 200,
+  token,
+});`;
+export const sequelizeCodeSnippet = `export const UserModel = sequelize.define("users", user);
+`;
+export const mysqlCodeSnippet = `export const sequelize = new Sequelize(databaseName, username, password, {
+  host: host, 
+  dialect: "mysql",
+  dialectOptions: {
+    ssl: {
+      rejectUnauthorized: false,
+    },
+  },`;

@@ -12,7 +12,8 @@ import componentDiagram from "../assets/component-diagram.png";
 import architectureDiagram from "../assets/architectural-diagram.png";
 import { Diagram } from "../components/ui/Diagram";
 import { TableDiagram } from "../components/ui/TableDiagram";
-import { AccordionDiagram } from "../components/ui/AccordionDiagram";
+import { AccordionDiagramFE } from "../components/ui/AccordionDiagramFE";
+import { AccordionDiagramBE } from "../components/ui/AccordionDiagramBE";
 
 export const About = () => {
   return (
@@ -42,7 +43,7 @@ export const About = () => {
       <Box
         sx={{
           margin: "auto",
-          width: { xs: "80%", sm: "550px", md: "700px" },
+          width: { xs: "80%", sm: "500px", md: "600px" },
         }}
       >
         <Diagram src={architectureDiagram} alt="architecture-diagram" />
@@ -80,16 +81,34 @@ export const About = () => {
         </Box>
       </Stack>
 
-      {/*  Accordion  */}
+      {/*  Accordion - FE */}
       <Stack direction="column" textAlign="center">
         <AppTitle>Key Concepts Applied</AppTitle>
+        <Typography variant="h4" color={color.grey}>
+          Frontend
+        </Typography>
         <Box
           sx={{
             width: { xs: "80%", md: "70%" },
             margin: "24px auto 96px auto",
           }}
         >
-          <AccordionDiagram />
+          <AccordionDiagramFE />
+        </Box>
+      </Stack>
+
+      {/*  Accordion - BE */}
+      <Stack direction="column" textAlign="center">
+        <Typography variant="h4" color={color.grey}>
+          Backend
+        </Typography>
+        <Box
+          sx={{
+            width: { xs: "80%", md: "70%" },
+            margin: "24px auto 96px auto",
+          }}
+        >
+          <AccordionDiagramBE />
         </Box>
       </Stack>
 

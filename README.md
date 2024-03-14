@@ -1,4 +1,4 @@
-# CoffeeCartel (React + Vite / MUI)
+# CoffeeCartel (React + Vite)
 
 This repo contains source code for CoffeeCartel, a responsive online coffee store web app.
 
@@ -98,6 +98,7 @@ coffeecartel-fullstack
 │  │  └─ ...
 │  ├─ services
 │  │  ├─ LocalStorage.js
+│  │  ├─ OrderApi.js
 │  │  └─ UserApi.js
 │  ├─ theme
 │  │  └─ FontTheme.js
@@ -114,10 +115,11 @@ coffeecartel-fullstack
 
 - Search Products
 - Filter Products
-- Cart (CRUD)
-- Cart Saved to Local Storage
 - Login
 - Register
 - View/Edit Profile
+- Cart (CRUD)
+- Cart Saved to Local Storage
+- View Order
 - Admin Panel
 - Route Guard
