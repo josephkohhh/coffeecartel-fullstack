@@ -89,7 +89,7 @@ export const LoginForm = () => {
       <Paper
         sx={{
           width: { xs: "65%", sm: "400px", lg: "550px" },
-          minHeight: "540px",
+          minHeight: "380px",
           margin: "90px auto",
           padding: "20px 30px",
           borderRadius: "10px",
@@ -149,12 +149,12 @@ export const LoginForm = () => {
           </Stack>
         </form>
 
-        <Divider sx={{ color: "#9FA1A1" }}>OR</Divider>
+        {/* <Divider sx={{ color: "#9FA1A1" }}>OR</Divider> */}
 
         {/* Google Login */}
-        <Stack width="100%" marginY={4} spacing={5.5}>
+        {/* <Stack width="100%" marginY={4} spacing={5.5}>
           <GoogleLoginButton />
-        </Stack>
+        </Stack> */}
 
         {/* Create account link */}
         <Typography
