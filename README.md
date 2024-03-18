@@ -15,7 +15,7 @@ This repo contains source code for CoffeeCartel, a responsive online coffee stor
 
 Frontend: https://github.com/josephkohhh/coffeecartel-frontend
 
-Backend: https://github.com/josephkohhh/coffeecartel-api
+Backend: https://github.com/josephkohhh/coffeecartel-backend
 
 ## Installation
 
