@@ -19,8 +19,8 @@ export const AddToCartButton = ({ onClick, disabled }) => {
       sx={{
         paddingY: "5px",
         color: color.dull,
-        bgcolor: color.lightChocolate,
-        "&:hover": { color: color.white, bgcolor: color.chocolate },
+        bgcolor: color.green,
+        "&:hover": { color: color.white, bgcolor: color.darkgreen },
       }}
       onClick={onClick}
     >
