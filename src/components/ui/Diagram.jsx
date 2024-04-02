@@ -4,8 +4,6 @@
  * Description: To display architectural diagram
  */
 
-import { Typography } from "@mui/material";
-
 export const Diagram = ({ src, alt }) => {
   return (
     <>
